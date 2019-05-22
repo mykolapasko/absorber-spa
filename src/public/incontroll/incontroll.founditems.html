@@ -1,0 +1,48 @@
+<div class="row-content"
+     id="item"
+     ng-repeat="item in $ctrl.items">
+  <div class="col-xs-2">
+    <h3 class="text-center">{{item.pipe}}</h3>
+  </div> 
+  <div class="col-xs-2">
+    <h3 class="text-center">{{item.diameter_one}}</h3>
+  </div>
+  <div class="col-xs-2">
+    <h3 class="text-center">{{item.diameter_two}}</h3>
+  </div>
+  <form name="itemForm" 
+        novalidate
+        id="diameter">
+    <div class="col-sm-2">
+      <input placeholder="D 3"
+      type="number" 
+      class="form-control"
+      ng-model="item.diameter_three"
+      ng-min="6.82"
+      ng-max="7.18"
+      ng-minlength=1
+      ng-maxlength=4
+      required>
+    </div>
+    <div class="col-sm-2">
+      <input placeholder="D 4"
+      type="number" 
+      class="form-control"
+      ng-model="item.diameter_four"
+      ng-min="6.82"
+      ng-max="7.18"
+      ng-minlength=1
+      ng-maxlength=4
+      required>
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-success"
+          type="button"
+          ng-disabled="itemForm.$invalid || itemForm.$pending"
+          ng-click="$ctrl.putInfo(item, $index);">
+          Send
+      </button>
+    </div>
+  </form>       
+</div>
+    

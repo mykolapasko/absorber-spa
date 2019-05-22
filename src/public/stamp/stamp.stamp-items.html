@@ -1,0 +1,37 @@
+<div class="row-content"
+     id="item"
+     ng-repeat="item in $ctrl.items">
+  <div class="col-sm-2">
+    <h3 class="text-center">{{item.pipe}}</h3>
+  </div> 
+  <form name="itemForm" 
+        novalidate
+        id="diameter">
+    <div class="col-sm-3">
+      <input placeholder="Stamp"
+      auto-focus
+      name="stamp" 
+      type="number" 
+      class="form-control"
+      ng-model="item.stamp"
+      ng-min=1
+      ng-minlength=1
+      ng-maxlength=4
+      required
+      stamp-exist>
+    </div>
+    <div class="col-sm-5">
+      <h4 class="text-center"
+          ng-if="itemForm.stamp.$invalid && itemForm.stamp.$touched">Error!</h4>
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-success"
+          type="button"
+          ng-disabled="itemForm.$invalid || itemForm.$pending"
+          ng-click="$ctrl.putInfo(item, $index);">
+          Send
+      </button>
+    </div>
+  </form>       
+</div>
+    

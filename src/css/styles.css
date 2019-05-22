@@ -1,0 +1,74 @@
+/*
+ * Style tweaks
+ * --------------------------------------------------
+ */
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+
+body {
+  padding-top: 70px;
+}
+
+footer {
+  padding-top: 10px;
+  background-color: #101010;
+  height: 40px;
+  color: #9d9d9d;
+  opacity: 0.89;
+}
+
+#section-jumb {
+  height: 100px;
+  padding: 40px;
+}
+
+/*/turn-off-number-input-spinners*/
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+#item {
+  background-color: #999999;
+  margin: 15px;
+  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+/*  padding: 15px;*/
+  height: 75px;
+}
+
+#diameter {
+  padding-top: 19px;
+}
+
+input.ng-pristine {
+  border-color:yellow;
+}
+
+input.ng-touched.ng-invalid {
+  border-color:red;
+}
+
+input.ng-touched.ng-valid {
+  border-color:green;
+}
+
+
+.sortorder:after {
+  content: '\25b2';   /*BLACK UP-POINTING TRIANGLE*/
+}
+.sortorder.reverse:after {
+  content: '\25bc';   /*BLACK DOWN-POINTING TRIANGLE*/
+}
+
+
+
+
+
+
+  
+}

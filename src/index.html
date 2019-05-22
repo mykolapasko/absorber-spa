@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Absorber SPA!</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/styles.css" rel="stylesheet">
+
+
+  </head>
+
+  <body ng-app="absorber">
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Absorber SPA Project</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actions <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a ui-sref="public.incontroll">In-Controll</a></li>
+                <li><a ui-sref="public.nozzle">Nozzle</a></li>
+                <li><a ui-sref="public.stamp">Stamp</a></li>
+                <li><a href="#">Weight</a></li>
+                <li><a href="#">Out-Controll</a></li>
+                <li><a ui-sref="public.report">Report</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Need help!</li>
+                <li><a href="#">Help</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+
+    <div class="container">
+
+      <ui-view>
+      </ui-view>
+
+      <footer class="footer navbar-fixed-bottom">
+        <p class="text-center">&copy; 2019 Powered by Mykola Pasko</p>
+      </footer>
+
+    </div><!--/.container-->
+
+    <!-- Libs -->
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-ui-router.min.js"></script>
+
+
+    <!-- Main module -->
+    <script src="absorber.module.js"></script>
+
+    <!-- Public module -->
+    <script src="public/public.module.js"></script>
+    <script src="public/public.routes.js"></script>
+    
+    <script src="public/common/common.module.js"></script>
+    <script src="public/common/data.service.js"></script>
+    <script src="public/common/common.auto-focus-directive.js"></script>
+    <script src="public/incontroll/incontroll.controller.js"></script>
+    <script src="public/incontroll/incontroll.component.js"></script>
+    <script src="public/incontroll/incontroll.pipe-exist-directive.js"></script>
+    <script src="public/nozzle/nozzle.controller.js"></script>
+    <script src="public/nozzle/nozzle.component.js"></script>
+    <script src="public/nozzle/nozzle.nozzle-exist-directive.js"></script>
+    <script src="public/stamp/stamp.controller.js"></script>
+    <script src="public/stamp/stamp.component.js"></script>
+    <script src="public/stamp/stamp.stamp-exist-directive.js"></script>
+    <script src="public/report/report.controller.js"></script>
+
+  </body>
+</html>

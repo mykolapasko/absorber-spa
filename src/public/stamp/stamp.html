@@ -1,0 +1,56 @@
+<div class="jumbotron"
+	id="section-jumb">
+   <p class="text-center">Stamp section</p>
+</div>
+<div class="container">
+	<div class="row-content">
+		<div class="col-sm-6">
+			<form class="navbar-form navbar-left" novalidate>
+				<div class="form-group">
+					<input placeholder="Banch" 
+					class="form-control"
+					ng-model="stCtrl.banch"
+					type="number"
+					ng-pattern="/^[0-9][^\.]*$/"
+					ng-min="1"
+					ng-max="99"
+					required>
+					<input placeholder="Pipe"
+					id="focusPipe" 
+					class="form-control"
+					ng-model="stCtrl.pipe"
+					type="number"
+					ng-min="1"
+					ng-pattern="/^[0-9][^\.]*$/"
+					ng-maxlength=3
+					required>
+				</div>
+				<button 
+					class="btn btn-warning"
+					ng-disabled = "!stCtrl.pipe"
+			        ng-click="stCtrl.getItemsToStamp(stCtrl.banch, stCtrl.pipe);">
+			        Search
+	      		</button>
+			</form>
+		</div>
+		<div class="col-sm-6">
+			<div class="row-content">
+				<div class="col-sm-6">
+					<h3 class="text-center">Banch: {{stCtrl.banch}}</h3>
+				</div>
+				<div class="col-sm-6">
+					<h3 class="text-center">Pipe: {{stCtrl.pipe}}</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<stamp-items 
+				items="stCtrl.items">			
+			</stamp-items>
+		</div>
+	</div>
+</div>

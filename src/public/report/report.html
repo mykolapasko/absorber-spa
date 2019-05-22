@@ -1,0 +1,53 @@
+<div class="jumbotron"
+	id="section-jumb">
+   <p class="text-center">Report section</p>
+</div>
+<div class="container">
+	<div class="row-content">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>
+						<button ng-click="repCtrl.sortBy('_id')">_id</button>
+						<span class="sortorder" ng-show="repCtrl.propertyName === '_id'" ng-class="{reverse: repCtrl.reverse}"></span>
+					</th>
+					<th >
+						<button ng-click="repCtrl.sortBy('updatedAt')">updatedAt</button>
+						<span class="sortorder" ng-show="repCtrl.propertyName === 'updatedAt'" ng-class="{reverse: repCtrl.reverse}"></span> 
+					</th>
+					<th>
+						<button ng-click="repCtrl.sortBy('diameter_avg')">diameter_avg</button>
+						<span class="sortorder" ng-show="repCtrl.propertyName === 'diameter_avg'" ng-class="{reverse: repCtrl.reverse}"></span> 
+					</th>
+					<th>
+						<button ng-click="repCtrl.sortBy('stamp')">stamp</button>
+						<span class="sortorder" ng-show="repCtrl.propertyName === 'stamp'" ng-class="{reverse: repCtrl.reverse}"></span> 
+					</th>
+					<th>
+						<button  ng-click="repCtrl.sortBy('abs_weight_calc')">abs_weight_calc</button>
+						<span class="sortorder" ng-show="repCtrl.propertyName === 'abs_weight_calc'" ng-class="{reverse: repCtrl.reverse}"></span> 
+					</th>
+					<th>
+						<button ng-click="repCtrl.sortBy('serial')">serial</button>
+						<span class="sortorder" ng-show="repCtrl.propertyName === 'serial'" ng-class="{reverse: repCtrl.reverse}"></span> 
+					</th>
+					<th>
+						<button  ng-click="repCtrl.sortBy('pipe')">pipe</button>
+						<span class="sortorder" ng-show="repCtrl.propertyName === 'pipe'" ng-class="{reverse: repCtrl.reverse}"></span> 
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in repCtrl.items">
+					<td>{{item._id}}</td>
+					<td>{{item.updatedAt | date:"dd/MM/yyyy"}}</td>
+					<td>{{item.diameter_avg}}</td>
+					<td>{{item.stamp}}</td>
+					<td>{{item.abs_weight_calc}}</td>
+					<td>{{item.serial}}</td>
+					<td>{{item.pipe}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

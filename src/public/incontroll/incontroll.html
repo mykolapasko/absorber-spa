@@ -1,0 +1,81 @@
+<div class="jumbotron"
+	id="section-jumb">
+    <p class="text-center">In-controll section</p>
+</div>
+<div class="container">
+	<div class="row-content">
+		<div class="col-sm-5">
+			<form class="navbar-form navbar-left" novalidate>
+				<div class="form-group">
+					<input placeholder="Serial" 
+					class="form-control"
+					ng-model="inCtrl.serial"
+					type="number"
+					ng-min="1"
+					ng-pattern="/^[0-9][^\.]*$/"
+					ng-maxlength=5
+					ng-minlength=5
+					required>
+					<input placeholder="Banch" 
+					class="form-control"
+					ng-model="inCtrl.banch"
+					type="number"
+					ng-pattern="/^[0-9][^\.]*$/"
+					ng-min="1"
+					ng-max="99"
+					required>
+				</div>
+			</form>
+			<div class="col-sm-4">
+				<br>
+				<form name="dimensionForm" novalidate>
+					<div class="form-group">
+					  <input  placeholder="Pipe"
+					  id="focusPipe"
+					  type="number"
+					  class="form-control"
+					  ng-model="inCtrl.data.pipe"
+					  ng-pattern="/^[0-9][^\.]*$/"
+					  ng-min = "1"
+					  ng-maxlength=3
+					  required
+					  pipe-exist>
+					  <br>
+					  <input  placeholder="D 1" 
+					  class="form-control"
+					  ng-model="inCtrl.data.diameter_one"
+					  type="number"
+					  ng-min="6.82"
+					  ng-max="7.18"
+					  ng-maxlength=4
+					  required>
+					  <br>
+					  <input  placeholder="D 2" 
+					  class="form-control"
+					  ng-model="inCtrl.data.diameter_two"
+					  type="number"
+					  ng-min="6.82"
+					  ng-max="7.18"
+					  ng-maxlength=4
+					  required>
+					</div>
+					<button  class="btn btn-success"
+							ng-disabled="dimensionForm.$invalid || dimensionForm.$pending" 
+							ng-click="inCtrl.postInfo();">Create</button>
+				</form>
+			</div>
+			<div class="col-sm-5">
+				<h3>Serial: {{inCtrl.serial}}</h3>
+				<h3>Banch: {{inCtrl.banch}}</h3>
+				<h3>Pipe: {{inCtrl.data.pipe}}</h3>
+				<h3>D1: {{inCtrl.data.diameter_one}}</h3>
+				<h3>D2: {{inCtrl.data.diameter_two}}</h3>
+			</div>
+		</div>
+		<div class="col-sm-7">
+			<found-items 
+				items="inCtrl.items">
+			</found-items>	
+		</div>
+	</div>
+</div>
