@@ -1,7 +1,7 @@
 {
-  "name": "todolistapi",
+  "name": "absorbeer-spa",
   "version": "1.0.0",
-  "description": "RESTful todoListApi",
+  "description": "RESTful absorbeer-spa",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,25 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/generalgmt/RESTfulAPITutorial.git"
+    "url": "https://github.com/mykolapasko/absorber-spa.git"
   },
-  "keywords": [
-    "RESTful",
-    "API",
-    "Tutorial"
-  ],
-  "author": "olatunde garuba",
+  "author": "mykola pasko",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/generalgmt/RESTfulAPITutorial/issues"
-  },
-  "homepage": "https://github.com/generalgmt/RESTfulAPITutorial#readme",
   "devDependencies": {
     "nodemon": "^1.11.0"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "mongoose": "^4.10.8"
+    "mongoose": "^4.10.8",
+    "serialport": "^6.1.1"
   }
 }
