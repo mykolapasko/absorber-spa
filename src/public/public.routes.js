@@ -39,6 +39,11 @@ function routeConfig ($stateProvider) {
       templateUrl: 'public/stamp/stamp.html',
       controller: 'StampController as stCtrl'
     })
+    .state('public.weight', {
+      url: '/weight',
+      templateUrl: 'public/weight/weight.html',
+      controller: 'WeightController as wgtCtrl'
+    })
     .state('public.report', {
       url: '/report',
       templateUrl: 'public/report/report.html',
