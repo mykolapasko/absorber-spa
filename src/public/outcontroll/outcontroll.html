@@ -1,0 +1,24 @@
+<form class="navbar-form navbar-left" novalidate>
+	<div class="form-group">
+		<input placeholder="Banch" 
+		class="form-control"
+		ng-model="outCtrl.searchTerm"
+		type="number"
+		ng-pattern="/^[0-9][^\.]*$/"
+		ng-min="1"
+		ng-max="99"
+		required>
+	</div>
+	<button  class="btn btn-success"
+			ng-disabled="!outCtrl.searchTerm" 
+			ng-click="outCtrl.getItems(outCtrl.searchTerm);">Find</button>
+</form>
+<div class="container">
+	<div class="row-content">
+		<div class="col-sm-12">
+			<outcontroll-items 
+				items="outCtrl.items">
+			</outcontroll-items>	
+		</div>
+	</div>
+</div>
