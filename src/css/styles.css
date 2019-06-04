@@ -11,6 +11,10 @@ body {
   padding-top: 70px;
 }
 
+h1 {
+  padding-top: 15px;
+}
+
 footer {
   padding-top: 10px;
   background-color: #101010;
@@ -65,10 +69,15 @@ input.ng-touched.ng-valid {
   content: '\25bc';   /*BLACK DOWN-POINTING TRIANGLE*/
 }
 
+#item-weight {
+  background-color: #999999;
+  margin: 15px;
+  border-radius: 20px;
+  border: 1px solid black;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  height: 125px;
+}
 
-
-
-
-
-  
+.vertical-align {
+  padding-top: 35px;
 }

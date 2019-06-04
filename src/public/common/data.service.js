@@ -88,6 +88,25 @@ function DataService($http, $rootScope) {
 
 // Nozzle end
 
+// Weight start
+  service.getItemsToWeight = function (searchTerm) {
+    return $http({
+      method: "GET",
+      url:("http://localhost:3000/tasks")
+    }).then(function(response) {
+      var filteredArray = response.data.filter(function(element) {
+        return element.banch === parseInt(searchTerm);
+      });
+      return filteredArray;
+    }).then(function(response) {
+      console.log(response);
+      return response.sort(function(a,b) {
+        return a.diameter_avg - b.diameter_avg;
+      });
+    });
+  }
+// Weight end
+
 }
 
 })();

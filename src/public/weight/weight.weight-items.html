@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="col-xs-12">
+    <div  class="row-content" 
+          id="item-weight"
+          ng-repeat="item in $ctrl.items">
+      <form name="itemForm" novalidate>
+        <div class="col-sm-2">
+          <h1 class="text-center">{{item.pipe}}</h1>
+        </div>
+        <div class="col-sm-3">
+          <h4>Weight_1: {{item.weight_1}}</h4>
+          <h4>Weight_2: {{item.weight_2}}</h4>
+          <h4>Delta: {{item.weight_delta}}</h4>
+          <h4>Stamp: {{item.data.stamp}}</h4>
+        </div>
+        <div class="col-sm-3">
+          <h4>Abs. weight: {{item.data.absorber_weight}}</h4>
+          <h4>Abs. hight: {{item.data.absorber_hight}}</h4>
+          <h4>Abs. density: {{item.data.actual_absorber_density}} </h4>
+        </div>
+        <div class="col-sm-4">
+          <div class="vertical-align">
+            <button class="btn btn-success"
+                ng-click="$ctrl.getElementWeight(item, $index);">
+                Weight
+            </button> 
+            <button class="btn btn-info"
+                ng-if="item.data.absorber_weight"
+                ng-click="$ctrl.getElementHight(item, $index);">
+                Hight
+            </button>
+            <button class="btn btn-danger"
+                type="button"
+                ng-if="item.data.actual_absorber_density"
+                ng-disabled="itemForm.$invalid || itemForm.$pending"
+                ng-click="$ctrl.putInfo(item, $index);">
+                Send
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

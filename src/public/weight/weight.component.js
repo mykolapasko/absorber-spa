@@ -12,13 +12,9 @@ angular.module('public')
 });
 
 //Component controller start
-FoundItemsComponentController.$inject = ['$scope', 'DataService', '$rootScope'];
-function FoundItemsComponentController ($scope, DataService, $rootScope) {
+WeightItemsComponentController.$inject = ['$scope', 'DataService'];
+function WeightItemsComponentController ($scope, DataService) {
   var $ctrl = this;
-
-  $scope.$on('item_created', function(event, obj) {
-    $ctrl.items.push(obj);
-  });
 
   $ctrl.putInfo = function(item, index) {
     var hight = 3510;
@@ -35,6 +31,8 @@ function FoundItemsComponentController ($scope, DataService, $rootScope) {
   $ctrl.remove = function (index) {
     $ctrl.items.splice(index, 1);
   }
+
+  
 }
 
 
