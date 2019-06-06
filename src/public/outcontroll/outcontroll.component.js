@@ -16,17 +16,22 @@ OutControllItemsComponentController.$inject = ['$scope', 'DataService'];
 function OutControllItemsComponentController ($scope, DataService) {
   var $ctrl = this;
 
-  $ctrl.putInfo = function(item, index) {
-    var hight = 3510;
-    var density = 1.8;
-    item.data = {};
-    item.data.diameter_three = parseFloat(item.diameter_three);
-    item.data.diameter_four = parseFloat(item.diameter_four);
-    item.data.diameter_avg = Math.round(((parseFloat(item.diameter_one) + parseFloat(item.diameter_two) + parseFloat(item.data.diameter_three) + parseFloat(item.data.diameter_four))/4).toPrecision(4)*100)/100;
-    item.data.abs_weight_calc = parseFloat(((hight * density * 3.14 * (item.data.diameter_avg * item.data.diameter_avg)/4)/1000).toPrecision(4));
-    var promise = DataService.putInfo(item)
-    .then($ctrl.remove(index));
+  $ctrl.getElementWeight = function(item, index) {
+    var promise = DataService.getElementWeight();
+    promise.then(function(response) {
+      item.data = {};
+      item.data.element_weight = parseFloat(response.slice(2,8));
+      item.data.status = ["completed"];
+      console.log(item.data);
+    });
   }
+
+  $ctrl.putInfo = function(myData, myIndex) {
+    var promise = DataService.putInfo(myData);
+    console.log(myData);
+    promise.then($ctrl.remove(myIndex));
+  }
+
 
   $ctrl.remove = function (index) {
     $ctrl.items.splice(index, 1);

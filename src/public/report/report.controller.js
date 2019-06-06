@@ -11,6 +11,8 @@ function ReportController(items, $filter) {
   repCtrl.$onInit = function() {
     repCtrl.propertyName = 'pipe';
     repCtrl.reverse = true;
+    repCtrl.countItems = items.length;
+
   }
 
   repCtrl.items = $filter('orderBy')(items, repCtrl.propertyName, repCtrl.reverse);

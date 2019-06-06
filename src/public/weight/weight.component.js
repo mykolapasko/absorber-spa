@@ -15,24 +15,50 @@ angular.module('public')
 WeightItemsComponentController.$inject = ['$scope', 'DataService'];
 function WeightItemsComponentController ($scope, DataService) {
   var $ctrl = this;
+  var weight;
+  var hight;
 
-  $ctrl.putInfo = function(item, index) {
-    var hight = 3510;
-    var density = 1.8;
-    item.data = {};
-    item.data.diameter_three = parseFloat(item.diameter_three);
-    item.data.diameter_four = parseFloat(item.diameter_four);
-    item.data.diameter_avg = Math.round(((parseFloat(item.diameter_one) + parseFloat(item.diameter_two) + parseFloat(item.data.diameter_three) + parseFloat(item.data.diameter_four))/4).toPrecision(4)*100)/100;
-    item.data.abs_weight_calc = parseFloat(((hight * density * 3.14 * (item.data.diameter_avg * item.data.diameter_avg)/4)/1000).toPrecision(4));
-    var promise = DataService.putInfo(item)
-    .then($ctrl.remove(index));
+  $ctrl.getElementWeight = function(item, index) {
+    var promise = DataService.getElementWeight();
+    promise.then(function(response) {
+      weight = parseFloat(response.slice(2,8));
+      console.log(weight);
+      return weight;
+    }).then(function(weight) {
+      if (parseFloat(weight) < 1750) {
+        item.data = {};
+        item.weight_1 = weight;
+      } else {
+        item.weight_2 = weight;
+        item.weight_3 = parseFloat((item.weight_2 - item.weight_1 - 0.70).toPrecision(4));
+        item.weight_delta = parseFloat((item.weight_3 - item.abs_weight_calc).toPrecision(4));
+        item.data.absorber_weight = parseFloat((item.abs_weight_calc + item.weight_delta).toPrecision(4));
+        item.data.status = ["ongoing"];
+        console.log(item.data);
+      }
+    });
+  }
+
+  $ctrl.getElementHight = function(item ,index) {
+    var promise = DataService.getElementHight(item._id);
+    promise.then(function(response) {
+      hight = response.absorber_hight;
+      return hight;
+    }).then(function(hight) {
+      item.data.absorber_hight = hight;
+      item.data.actual_absorber_density = Math.round((item.data.absorber_weight/(7.85*item.diameter_avg*item.diameter_avg*item.data.absorber_hight)*1000).toPrecision(3)*100)/100;
+    });
+  }
+
+  $ctrl.putInfo = function(myData, myIndex) {
+    var promise = DataService.putInfo(myData);
+    promise.then($ctrl.remove(myIndex));
   }
 
   $ctrl.remove = function (index) {
     $ctrl.items.splice(index, 1);
   }
 
-  
 }
 
 
