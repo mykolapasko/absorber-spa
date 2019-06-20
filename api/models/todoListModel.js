@@ -92,6 +92,16 @@ var ElementSchema = new Schema({
   nozzle: {
     type: Number,
     default: null
+  },
+
+  nozzle_avg: {
+    type: Number,
+    default: null
+  },
+
+  stamp_avg: {
+    type: Number,
+    default: null
   }
 },
 
