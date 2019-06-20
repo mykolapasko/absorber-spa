@@ -23,6 +23,7 @@ function DataService($http, $rootScope) {
 
   service.putInfo = function (put_data) {;
     var putData = put_data.data;
+    console.log(putData);
     return $http({
       method: "PUT",
       url: ("http://localhost:3000/tasks/" + put_data._id),
@@ -94,19 +95,58 @@ function DataService($http, $rootScope) {
       method: "GET",
       url:("http://localhost:3000/tasks")
     }).then(function(response) {
+      console.log(response);
       var filteredArray = response.data.filter(function(element) {
-        return element.banch === parseInt(searchTerm);
+        return element.banch === parseInt(searchTerm) && element.status[0] === 'pending';
       });
       return filteredArray;
     }).then(function(response) {
-      console.log(response);
       return response.sort(function(a,b) {
         return a.diameter_avg - b.diameter_avg;
       });
     });
   }
+
+  service.getElementWeight = function () {
+    return $http({
+      method: "GET",
+      url: ("http://localhost:3000/weight")
+    }).then(function (weight) {
+      return weight.data;
+    });
+  }
+
+  service.getElementHight = function (itemId) {
+    return $http({
+      method: "GET",
+      url:("http://localhost:3000/tasks/" + itemId),
+    }).then(function(response) {
+      return response.data;
+    });
+  }
 // Weight end
 
+
+// Out Controll
+
+service.getItemsToOutControll = function (searchTerm) {
+    return $http({
+      method: "GET",
+      url:("http://localhost:3000/tasks")
+    }).then(function(response) {
+      console.log(response);
+      var filteredArray = response.data.filter(function(element) {
+        return element.banch === parseInt(searchTerm) && element.status[0] === 'ongoing';
+      });
+      return filteredArray;
+    }).then(function(response) {
+      return response.sort(function(a,b) {
+        return a.diameter_avg - b.diameter_avg;
+      });
+    });
+  }
+
+// Out Controll end
 }
 
 })();
