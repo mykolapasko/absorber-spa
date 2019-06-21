@@ -30,7 +30,7 @@ function DataService($http, $rootScope) {
       data: putData,
       headers: {'Content-Type': 'application/json'}
     }).then( function(response) {
-      //Broadcasting event 'nozzle_updated', to clear and focus pipe field
+      //Broadcasting event 'item_updated', to clear and focus pipe field
       $rootScope.$broadcast('item_updated');
       console.log("success!");
     }, function(response) {
