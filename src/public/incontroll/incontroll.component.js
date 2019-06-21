@@ -28,7 +28,7 @@ function FoundItemsComponentController ($scope, DataService, $rootScope) {
     item.data.diameter_four = parseFloat(item.diameter_four);
     item.data.diameter_avg = Math.round(((parseFloat(item.diameter_one) + parseFloat(item.diameter_two) + parseFloat(item.data.diameter_three) + parseFloat(item.data.diameter_four))/4).toPrecision(4)*100)/100;
     item.data.abs_weight_calc = parseFloat(((hight * density * 3.14 * (item.data.diameter_avg * item.data.diameter_avg)/4)/1000).toPrecision(4));
-    item.data.stamp_avg = Math.round(((parseFloat(item.data.diameter_three) + parseFloat(item.data.diameter_four))/2).toPrecision(4)*100)/100;
+    item.data.nozzle_avg = Math.round(((parseFloat(item.data.diameter_three) + parseFloat(item.data.diameter_four))/2).toPrecision(4)*100)/100;
     var promise = DataService.putInfo(item)
     .then($ctrl.remove(index));
   }
