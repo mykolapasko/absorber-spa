@@ -23,7 +23,7 @@ function DataService($http, $rootScope) {
 
   service.putInfo = function (put_data) {;
     var putData = put_data.data;
-    console.log(putData);
+    console.log("Banch: ", put_data.banch, "Pipe: ", put_data.pipe, );
     return $http({
       method: "PUT",
       url: ("http://localhost:3000/tasks/" + put_data._id),
@@ -32,7 +32,7 @@ function DataService($http, $rootScope) {
     }).then( function(response) {
       //Broadcasting event 'item_updated', to clear and focus pipe field
       $rootScope.$broadcast('item_updated');
-      console.log("success!");
+      console.log("success!", response.data);
     }, function(response) {
       console.log("failed!");
     });
@@ -147,6 +147,25 @@ service.getItemsToOutControll = function (searchTerm) {
   }
 
 // Out Controll end
+
+// Edit start
+
+service.getItemsToEdit = function (banch, pipe) {
+  return $http({
+      method: "GET",
+      url:("http://localhost:3000/tasks")
+    }).then(function(response) {
+      var filteredArray = response.data.filter(function(item) {
+        return item.banch === parseInt(banch) && item.pipe === parseInt(pipe) ;
+      });
+      return filteredArray;
+    });
+
+  }
+
+// Edit end
+
+
 }
 
 })();

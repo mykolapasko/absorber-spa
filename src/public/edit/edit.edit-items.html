@@ -1,0 +1,81 @@
+<div class="row-content"
+     ng-repeat="item in $ctrl.items">
+  <form name="itemForm" 
+    novalidate>
+    <div class="row">
+      <div class="col-sm-3">
+        <input placeholder="D 1"
+          name="diameter_one" 
+          type="number" 
+          class="form-control"
+          ng-model="item.diameter_one"
+          ng-min=0
+          ng-minlength=1
+          ng-maxlength=4
+          required>
+        <br>
+      </div>
+      <div class="col-sm-9">
+        <h4>diameter_one: {{item.diameter_one}}</h4> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <input placeholder="D 1"
+          name="diameter_two" 
+          type="number" 
+          class="form-control"
+          ng-model="item.diameter_two"
+          ng-min=0
+          ng-minlength=1
+          ng-maxlength=4
+          required>
+        <br>
+      </div>
+      <div class="col-sm-9">
+        <h4>diameter_two: {{item.diameter_two}}</h4> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <input placeholder="D 1"
+          name="diameter_three" 
+          type="number" 
+          class="form-control"
+          ng-model="item.diameter_three"
+          ng-min=0
+          ng-minlength=1
+          ng-maxlength=4
+          required>
+        <br>
+      </div>
+      <div class="col-sm-9">
+        <h4>diameter_three: {{item.diameter_three}}</h4> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <input placeholder="D 1"
+          name="diameter_four" 
+          type="number" 
+          class="form-control"
+          ng-model="item.diameter_four"
+          ng-min=0
+          ng-minlength=1
+          ng-maxlength=4
+          required>
+        <br>
+      </div>
+      <div class="col-sm-9">
+        <h4>diameter_four: {{item.diameter_four}}</h4> 
+      </div>
+    </div>    
+    <button class="btn btn-success"
+        type="button"
+        ng-disabled="itemForm.$invalid || itemForm.$pending"
+        ng-click="$ctrl.putInfo(item, $index);">
+        Send
+      </button>
+  </form>   
+</div>
+    

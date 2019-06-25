@@ -49,6 +49,11 @@ function routeConfig ($stateProvider) {
       templateUrl: 'public/outcontroll/outcontroll.html',
       controller: 'OutControllController as outCtrl'
     })
+    .state('public.edit', {
+      url: '/edit',
+      templateUrl: 'public/edit/edit.html',
+      controller: 'EditController as edCtrl'
+    })
     .state('public.report', {
       url: '/report',
       templateUrl: 'public/report/report.html',
