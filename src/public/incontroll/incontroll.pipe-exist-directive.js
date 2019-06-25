@@ -16,7 +16,7 @@ function PipeExist($http, $q) {
         return $http.get('http://localhost:3000/tasks')
         .then(function(response) {
           return response.data.filter(function(item) {
-            return item.banch === parseInt(scope.inCtrl.banch) && item.serial === parseInt(scope.inCtrl.serial);
+            return item.serial === parseInt(scope.inCtrl.serial);
           });
         })
         .then(function(response) {
