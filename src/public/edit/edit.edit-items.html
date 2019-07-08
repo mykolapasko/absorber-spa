@@ -69,6 +69,23 @@
       <div class="col-sm-9">
         <h4>diameter_four: {{item.diameter_four}}</h4> 
       </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <input placeholder="Pipe"
+          name="diameter_four" 
+          type="number" 
+          class="form-control"
+          ng-model="item.pipe"
+          ng-pattern="/^[0-9][^\.]*$/"
+          ng-min = "1"
+          ng-maxlength=3
+          required>
+        <br>
+      </div>
+      <div class="col-sm-9">
+        <h4>Pipe: {{item.pipe}}</h4> 
+      </div>
     </div>    
     <button class="btn btn-success"
         type="button"
