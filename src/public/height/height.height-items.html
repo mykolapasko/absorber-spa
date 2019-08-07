@@ -1,0 +1,64 @@
+<div class="col-xs-3"
+         id="height-item"
+         ng-repeat="item in $ctrl.items">
+         <h1 class="text-center" ><span class="label label-danger">{{item.pipe}}</span></h1>
+         {{value}}/{{item.data.absorber_hight}}/{{item.diameter_avg}}
+         <div class="row-content">
+           <div class="col-xs-6">
+            <form>
+              <label>
+                <input type="radio" ng-model="value" value="63.5" ng-change="$ctrl.newValue(value, $index, item)">
+                63.5
+              </label><br/>
+              <label>
+                <input type="radio" ng-model="value" value="63.6" ng-change="$ctrl.newValue(value, $index, item)">
+                63.6
+              </label><br/>
+              <label>
+                <input type="radio" ng-model="value" value="63.7" ng-change="$ctrl.newValue(value, $index, item)">
+                63.7
+              </label><br/>
+              <label>
+                <input type="radio" ng-model="value" value="63.8" ng-change="$ctrl.newValue(value, $index, item)">
+                63.8
+              </label><br/>
+              <label>
+                <input type="radio" ng-model="value" value="63.9" ng-change="$ctrl.newValue(value, $index, item)">
+                63.9
+              </label><br/>
+              <label>
+                <input type="radio" ng-model="value" value="64.0" ng-change="$ctrl.newValue(value, $index, item)">
+                64.0
+              </label><br/>
+              <label>
+                <input type="radio" ng-model="value" value="64.1" ng-change="$ctrl.newValue(value, $index, item)">
+                64.1
+              </label><br/>
+              <label>
+                <input type="radio" ng-model="value" value="64.2" ng-change="$ctrl.newValue(value, $index, item)">
+                64.2
+              </label><br/>
+              <label>
+                <input type="radio" ng-model="value" value="64.3" ng-change="$ctrl.newValue(value, $index, item)">
+                64.3
+              </label><br/>
+              <label>
+                <input type="radio" ng-model="value" value="64.4" ng-change="$ctrl.newValue(value, $index, item)">
+                64.4
+              </label><br/>
+              <label>
+                <input type="radio" ng-model="value" value="64.5" ng-change="$ctrl.newValue(value, $index, item)">
+                64.5
+              </label><br/>
+              
+            </form>
+           </div>
+           <div class="col-xs-6">
+             <button class="btn btn-danger"
+                      ng-disabled="!item.data"
+                      ng-click="$ctrl.putInfo($ctrl.items[$index], $index, $ctrl.value);">
+                      Send
+            </button>
+           </div>
+         </div>
+</div>

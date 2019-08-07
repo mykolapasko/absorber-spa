@@ -20,6 +20,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "mongoose": "^4.10.8",
+    "pdfmake": "^0.1.58",
     "serialport": "^6.1.1"
   }
 }

@@ -1,0 +1,25 @@
+<form class="navbar-form navbar-left" novalidate>
+	<div class="form-group">
+		<input placeholder="Banch" 
+		class="form-control"
+		ng-model="hgtCtrl.searchTerm"
+		type="number"
+		ng-pattern="/^[0-9][^\.]*$/"
+		ng-min="1"
+		ng-max="99"
+		required>
+	</div>
+	<button  class="btn btn-success"
+			ng-disabled="!hgtCtrl.searchTerm" 
+			ng-click="hgtCtrl.getItems(hgtCtrl.searchTerm);">Find</button>
+</form>
+
+<div class="container">
+	<div class="row-content">
+		<div class="col-sm-12">
+			<height-items 
+				items="hgtCtrl.items">
+			</height-items>	
+		</div>
+	</div>
+</div>

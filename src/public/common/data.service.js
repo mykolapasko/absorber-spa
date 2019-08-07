@@ -15,7 +15,6 @@ function DataService($http, $rootScope) {
       url:("http://localhost:3000/tasks")
     });
     return response.then(function(response) {
-      console.log(response.data);
       return response.data
     });
   }
@@ -23,7 +22,6 @@ function DataService($http, $rootScope) {
 
   service.putInfo = function (put_data) {;
     var putData = put_data.data;
-    console.log("Banch: ", put_data.banch, "Pipe: ", put_data.pipe, );
     return $http({
       method: "PUT",
       url: ("http://localhost:3000/tasks/" + put_data._id),
@@ -56,7 +54,7 @@ function DataService($http, $rootScope) {
 
 // InControll start
 
-  service.getItemsToControll = function () {
+  service.getItemsToInControll = function () {
     var response = $http({
       method: "GET",
       url:("http://localhost:3000/tasks")
@@ -107,14 +105,46 @@ function DataService($http, $rootScope) {
     });
   }
 
-  service.getElementWeight = function () {
+
+  service.getElementWeight = function (itemId) {
     return $http({
       method: "GET",
-      url: ("http://localhost:3000/weight")
-    }).then(function (weight) {
-      return weight.data;
+      url: ("http://localhost:3000/tasks/" + itemId)
+    }).then(function (response) {
+      return response.data;
     });
   }
+
+
+  // service.getElementWeight = function () {
+  //   return $http({
+  //     method: "GET",
+  //     url: ("http://localhost:3000/weight")
+  //   }).then(function (weight) {
+  //     return weight.data;
+  //   });
+  // }
+
+  // Weight end
+
+//Height start
+
+  service.getItemsToHeight = function(searchTerm) {
+    return $http({
+      method: "GET",
+      url:("http://localhost:3000/tasks")
+    }).then(function(response) {
+      var filteredArray = response.data.filter(function(element) {
+        return element.banch === parseInt(searchTerm) && element.status[0] === 'pending';
+      });
+      return filteredArray;
+    }).then(function(response) {
+      return response.sort(function(a,b) {
+        return a.diameter_avg - b.diameter_avg;
+      });
+    });
+  }
+
 
   service.getElementHight = function (itemId) {
     return $http({
@@ -124,10 +154,11 @@ function DataService($http, $rootScope) {
       return response.data;
     });
   }
-// Weight end
+
+//Height end
 
 
-// Out Controll
+// Out Controll start
 
 service.getItemsToOutControll = function (searchTerm) {
     return $http({
@@ -136,13 +167,60 @@ service.getItemsToOutControll = function (searchTerm) {
     }).then(function(response) {
       console.log(response);
       var filteredArray = response.data.filter(function(element) {
-        return element.banch === parseInt(searchTerm) && element.status[0] === 'ongoing';
+        return element.banch === parseInt(searchTerm);
       });
       return filteredArray;
     }).then(function(response) {
       return response.sort(function(a,b) {
         return a.diameter_avg - b.diameter_avg;
       });
+    });
+  }
+
+  service.getContainer = function () {
+    return $http({
+      method: "GET",
+      url: ("http://localhost:3000/tasks")
+    }).then(function(response){
+      var sorted_response = response.data.sort(function(a,b) {
+          return b.container - a.container;
+        });
+      var last = sorted_response[0].container;
+      var length = response.data.filter(function(item) {
+        return item.container === last;
+      }).length;
+      var container_data = {};
+
+      if (!last) {
+        container_data.last = 602;
+        container_data.length = 0;
+        return container_data;
+      } else if (length === 18) {
+        container_data.last = last + 1;
+        container_data.length = 0;
+        return container_data;
+      } else {
+        container_data.last = last;
+        container_data.length = length;
+        return container_data;
+      }
+
+    });
+  }
+
+
+  service.getItemsToPdf = function(searchTerm) {
+    return $http({
+      method: "GET",
+      url: ("http://localhost:3000/tasks")
+    }).then(function(response) {
+      return response.data.filter(function(item) {
+        return item.container === searchTerm;
+      });
+    }).then(function(response) {
+      return response.sort(function(a,b) {
+        return a.stamp - b.stamp;
+      })
     });
   }
 

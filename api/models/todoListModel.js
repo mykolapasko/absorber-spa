@@ -102,6 +102,11 @@ var ElementSchema = new Schema({
   stamp_avg: {
     type: Number,
     default: null
+  },
+
+  container: {
+    type: Number,
+    default: null
   }
 },
 

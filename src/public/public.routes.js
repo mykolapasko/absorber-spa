@@ -25,7 +25,7 @@ function routeConfig ($stateProvider) {
       controller: 'InControllController as inCtrl',
       resolve: {
         items: ['DataService', function (DataService) {
-          return DataService.getItemsToControll();
+          return DataService.getItemsToInControll();
         }]
       }
     })
@@ -44,10 +44,30 @@ function routeConfig ($stateProvider) {
       templateUrl: 'public/weight/weight.html',
       controller: 'WeightController as wgtCtrl'
     })
+    .state('public.height', {
+      url: '/height',
+      templateUrl: 'public/height/height.html',
+      controller: 'HeightController as hgtCtrl'
+    })
     .state('public.outcontroll', {
       url: '/outcontroll',
       templateUrl: 'public/outcontroll/outcontroll.html',
-      controller: 'OutControllController as outCtrl'
+      controller: 'OutControllController as outCtrl',
+      resolve: {
+        container: ['DataService', function (DataService) {
+          return DataService.getContainer();
+        }]
+      }
+    })
+    .state('public.package', {
+      url: '/package',
+      templateUrl: 'public/package/package.html',
+      controller: 'PackageController as pckCtrl'
+    })
+    .state('public.pdf', {
+      url: '/pdf',
+      templateUrl: 'public/pdf/pdf.html',
+      controller: 'PDFController as pdfCtrl'
     })
     .state('public.edit', {
       url: '/edit',

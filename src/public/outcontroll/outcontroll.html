@@ -13,7 +13,27 @@
 			ng-disabled="!outCtrl.searchTerm" 
 			ng-click="outCtrl.getItems(outCtrl.searchTerm);">Find</button>
 </form>
+
+<form class="navbar-form navbar-left" novalidate>
+	<div class="form-group">
+		<input placeholder="Container" 
+		class="form-control"
+		ng-model="outCtrl.searchContainer"
+		type="number"
+		ng-pattern="/^[0-9][^\.]*$/"
+		ng-min="1"
+		required>
+	</div>
+	<button  class="btn btn-success"
+			ng-click="outCtrl.getItemsToPdf(outCtrl.searchContainer);">PDF</button>
+</form>
+
 <div class="container">
+	<div class="row-content">
+		<div class="col-sm-12">
+			<h2>Container: {{outCtrl.last}} Counter: {{outCtrl.length}}</h2>
+		</div>
+	</div>
 	<div class="row-content">
 		<div class="col-sm-12">
 			<outcontroll-items 
