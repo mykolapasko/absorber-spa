@@ -208,6 +208,26 @@ service.getItemsToOutControll = function (searchTerm) {
     });
   }
 
+// Out Controll end
+
+// Package start
+
+service.getItemsToPackage = function(searchTerm) {
+  return $http({
+    method: "GET",
+    url: ("http://localhost:3000/tasks")
+  }).then(function(response) {
+    return response.data.filter(function(item) {
+      return item.container === searchTerm && item.status[0] !== 'checked';
+    });
+  }).then(function(response) {
+    return response.sort(function(a,b) {
+      return a.stamp - b.stamp;
+    })
+  });
+}
+
+// Package end
 
   service.getItemsToPdf = function(searchTerm) {
     return $http({
@@ -224,7 +244,7 @@ service.getItemsToOutControll = function (searchTerm) {
     });
   }
 
-// Out Controll end
+
 
 // Edit start
 

@@ -105,3 +105,17 @@ input.ng-touched.ng-valid {
   padding-left: 50px;
   padding-bottom: 50px;
 }
+
+#package-item {
+  background-color: #999999;
+  margin: 5px;
+  border-radius: 20px;
+  border: 1px solid black;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  padding: 5px;
+  height: 125px;
+}
+
+#package-item button {
+margin-left: 25px;
+}
