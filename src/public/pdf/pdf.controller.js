@@ -48,11 +48,56 @@ function PDFController($scope, DataService) {
       };
     }
 
+    var doted_list = [];
+    pdfCtrl.pdfContent.forEach(function(item) {
+    	doted_list.push(' ' + item.stamp.toString() + '.19');
+    });
+
     var dd = {
       content: [
-          { text: 'Dynamic parts' },
+          { 
+          	text: 'Упаковочный лист',
+          	style: 'header',
+          	alignment: 'center' 
+          },
+          {
+          	text: 'Элемент поглощающий 12-1-005.01\n\n',
+          	style: 'header',
+          	alignment: 'center'
+          },
+          {
+          	text: '№№' + doted_list + '\nИтого: ' + doted_list.length + 'шт.\n\n',
+          	italics: true,
+          	fontSize: 14
+          },
+          {
+          	text: 'Партия №' + pdfCtrl.pdfContent[0].container + '\nДоговор № ' +
+          	'____________________________\n\n'
+          },
+          {
+          	style: 'tableExample',
+          	table: {
+          		widths: [175, '*', 100, '*'],
+          		body: [
+          			['Ответственный за упаковку и комплектацию','','\nВ.В.Ворожко','']
+          		]
+          	},
+          	layout: 'noBorders',
+          	pageBreak: 'after'
+
+          },
+
           table(externalDataRetrievedFromServer, ['stamp','pipe','container','diameter_avg', 'element_weight', 'serial', 'actual_absorber_density'])
-      ]
+      ],
+      styles: {
+      	header: {
+      		fontSize: 18,
+      		bold: true
+      	},
+      	tableExample: {
+					margin: [0, 5, 0, 15]
+				}
+      }
     };
 
     pdfMake.createPdf(dd).download(pdfCtrl.searchTerm);
