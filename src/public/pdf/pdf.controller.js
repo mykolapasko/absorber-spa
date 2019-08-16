@@ -25,7 +25,44 @@ function PDFController($scope, DataService) {
     function buildTableBody(data, columns) {
       var body = [];
 
-      body.push(['Номер пэла', 'труба', 'партия', 'ср. даметер', 'вес', 'серия', 'плотность']);
+      body.push([
+                  {
+                    text:'номер',
+                    fontSize: 10
+                  }, 
+                  {
+                    text:'труба',
+                    fontSize:10
+                  },
+                  { 
+                    text:'диаметр',
+                    fontSize:10
+                  }, 
+                  {
+                    text:'вес',
+                    fontSize:10
+                  },
+                  { 
+                    text:'высота',
+                    fontSize:10
+                  }, 
+                  {
+                    text:'плотность',
+                    fontSize:10
+                  },
+                  {
+                    text:'вес пэл',
+                    fontSize:10
+                  },
+                  {
+                    text:'серия',
+                    fontSize:10
+                  },
+                  {
+                    text:'контейнер',
+                    fontSize:10
+                  }
+                ]);
 
       data.forEach(function(row) {
           var dataRow = [];
@@ -44,9 +81,20 @@ function PDFController($scope, DataService) {
       return {
           table: {
               body: buildTableBody(data, columns)
+            },
+          layout: {
+            hLineWidth: function (i, node) {
+              return (i === 0 || i === node.table.body.length) ? 0 : 0;
+            },
+            vLineWidth: function (i, node) {
+              return (i === 0 || i === node.table.widths.length) ? 0 : 0;
+            },
+            fillColor: function (rowIndex, node, columnIndex) {
+              return (rowIndex % 2 === 0) ? '#eee' : null;
+            }
           }
-      };
-    }
+        };
+      }
 
     var doted_list = [];
     pdfCtrl.pdfContent.forEach(function(item) {
@@ -79,15 +127,14 @@ function PDFController($scope, DataService) {
           	table: {
           		widths: [175, '*', 100, '*'],
           		body: [
-          			['Ответственный за упаковку и комплектацию','','\nВ.В.Ворожко','']
+          			['Ответственный за упаковку и комплектацию','','\nВ.В. Ворожко','']
           		]
           	},
           	layout: 'noBorders',
           	pageBreak: 'after'
-
           },
 
-          table(externalDataRetrievedFromServer, ['stamp','pipe','container','diameter_avg', 'element_weight', 'serial', 'actual_absorber_density'])
+          table(externalDataRetrievedFromServer, ['stamp', 'pipe', 'diameter_avg', 'absorber_weight', 'absorber_hight', 'actual_absorber_density', 'element_weight', 'serial', 'container'])
       ],
       styles: {
       	header: {
