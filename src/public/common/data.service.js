@@ -167,7 +167,7 @@ service.getItemsToOutControll = function (searchTerm) {
     }).then(function(response) {
       console.log(response);
       var filteredArray = response.data.filter(function(element) {
-        return element.banch === parseInt(searchTerm);
+        return element.banch === parseInt(searchTerm) && !element.container;
       });
       return filteredArray;
     }).then(function(response) {
@@ -229,13 +229,15 @@ service.getItemsToPackage = function(searchTerm) {
 
 // Package end
 
+
+// PDF start
   service.getItemsToPdf = function(searchTerm) {
     return $http({
       method: "GET",
       url: ("http://localhost:3000/tasks")
     }).then(function(response) {
       return response.data.filter(function(item) {
-        return item.container === searchTerm;
+        return item.container === searchTerm && item.status[0] === "checked";
       });
     }).then(function(response) {
       return response.sort(function(a,b) {
@@ -243,7 +245,7 @@ service.getItemsToPackage = function(searchTerm) {
       })
     });
   }
-
+//PDF end
 
 
 // Edit start
@@ -255,6 +257,20 @@ service.getItemsToEdit = function (banch, pipe) {
     }).then(function(response) {
       var filteredArray = response.data.filter(function(item) {
         return item.banch === parseInt(banch) && item.pipe === parseInt(pipe) ;
+      });
+      return filteredArray;
+    });
+
+  }
+
+  service.getItemsToEditContainer = function (stamp) {
+  return $http({
+      method: "GET",
+      url:("http://localhost:3000/tasks")
+    }).then(function(response) {
+      console.log(response);
+      var filteredArray = response.data.filter(function(item) {
+        return item.stamp === parseInt(stamp);
       });
       return filteredArray;
     });

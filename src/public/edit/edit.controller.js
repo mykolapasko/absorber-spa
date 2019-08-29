@@ -16,6 +16,14 @@ function EditController(DataService, $scope) {
     });
   }
 
+  edCtrl.getItemsToEditContainer = function(stamp) {
+    var promise = DataService.getItemsToEditContainer(stamp);
+    promise.then(function(response) {
+      console.log(response);
+      edCtrl.items = response;
+    });
+  }
+
 }
 
 

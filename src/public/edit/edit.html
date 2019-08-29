@@ -27,29 +27,42 @@
 				<button 
 					class="btn btn-warning"
 					ng-disabled = "!edCtrl.pipe"
-	        ng-click="edCtrl.getItemsToEdit(edCtrl.banch, edCtrl.pipe);">
-	        Search
-	      </button>
+      		ng-click="edCtrl.getItemsToEdit(edCtrl.banch, edCtrl.pipe);">
+      		Search
+			   </button>
 			</form>
 		</div>
 		<div class="col-sm-6">
-			<div class="row-content">
-				<div class="col-sm-6">
-					<h3 class="text-center">Banch: {{edCtrl.banch}}</h3>
+			<form class="navbar-form navbar-left" novalidate>
+				<div class="form-group">
+					<input placeholder="Stamp" 
+						class="form-control"
+						ng-model="edCtrl.stamp"
+						type="number"
+						ng-pattern="/^[0-9][^\.]*$/"
+						ng-min="1"
+						ng-max="9999"
+						required>
 				</div>
-				<div class="col-sm-6">
-					<h3 class="text-center">Pipe: {{edCtrl.pipe}}</h3>
-				</div>
-			</div>
+				<button 
+					class="btn btn-warning"
+					ng-disabled = "!edCtrl.stamp"
+      		ng-click="edCtrl.getItemsToEditContainer(edCtrl.stamp);">
+      		Search
+			   </button>
+			</form>
 		</div>
 	</div>
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-6 col-sm-offset-1">
+		<div class="col-sm-6 col-sm-offset-2">
 			<edit-items 
 				items="edCtrl.items">			
 			</edit-items>
+			<edit-item 
+				item="edCtrl.item">			
+			</edit-item>
 		</div>
 	</div>
 </div>

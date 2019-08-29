@@ -40,8 +40,8 @@ function OutControllItemsComponentController ($scope, DataService) {
   $ctrl.putInfo = function(item, index) {
     console.log("last: ", $scope.$parent.outCtrl.last);
     console.log("length: ", $scope.$parent.outCtrl.length);
-    item.data = {};
     item.data.container = $scope.$parent.outCtrl.last;
+    item.data.status = ["completed"];
     var promise = DataService.putInfo(item);
     promise.then($ctrl.remove(index));
   }

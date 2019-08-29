@@ -73,7 +73,7 @@
     <div class="row">
       <div class="col-sm-3">
         <input placeholder="Pipe"
-          name="diameter_four" 
+          name="pipe" 
           type="number" 
           class="form-control"
           ng-model="item.pipe"
@@ -85,6 +85,37 @@
       </div>
       <div class="col-sm-9">
         <h4>Pipe: {{item.pipe}}</h4> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <input placeholder="Container"
+          name="container" 
+          type="number" 
+          class="form-control"
+          ng-model="item.container"
+          ng-pattern="/^[0-9][^\.]*$/"
+          ng-min = "1"
+          ng-maxlength=5
+          required>
+        <br>
+      </div>
+      <div class="col-sm-9">
+        <h4>container: {{item.container}}</h4> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <select name="status" id="status" ng-model="$ctrl.data.status">
+          <option value="pending">pending</option>
+          <option value="ongoing">ongoing</option>
+          <option value="completed">completed</option>
+          <option value="checked">checked</option>
+          <option value="defect">defect</option>
+        </select><br>
+      </div>
+      <div class="col-sm-9">
+        <h4>status: {{$ctrl.data.status}}</h4> 
       </div>
     </div>    
     <button class="btn btn-success"

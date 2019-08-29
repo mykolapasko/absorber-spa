@@ -44,6 +44,14 @@
 						<span class="sortorder" ng-show="repCtrl.propertyName === 'updatedAt'" ng-class="{reverse: repCtrl.reverse}"></span> 
 					</th>
 					<th>
+						<button ng-click="repCtrl.sortBy('status')">status</button>
+						<span class="sortorder" ng-show="repCtrl.propertyName === 'status'" ng-class="{reverse: repCtrl.reverse}"></span> 
+					</th>
+					<th>
+						<button ng-click="repCtrl.sortBy('container')">container</button>
+						<span class="sortorder" ng-show="repCtrl.propertyName === 'container'" ng-class="{reverse: repCtrl.reverse}"></span> 
+					</th>
+					<th>
 						<button ng-click="repCtrl.sortBy('serial')">serial</button>
 						<span class="sortorder" ng-show="repCtrl.propertyName === 'serial'" ng-class="{reverse: repCtrl.reverse}"></span> 
 					</th>
@@ -60,6 +68,8 @@
 					<td>{{item.diameter_four}}</td>
 					<td>{{item.diameter_avg}}</td>
 					<td>{{item.updatedAt | date:"dd/MM/yyyy"}}</td>
+					<td>{{item.status[0]}}</td>
+					<td>{{item.container}}</td>
 					<td>{{item.serial}}</td>
 				</tr>
 			</tbody>
