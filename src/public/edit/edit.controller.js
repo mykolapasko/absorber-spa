@@ -19,7 +19,6 @@ function EditController(DataService, $scope) {
   edCtrl.getItemToEditContainer = function(stamp) {
     var promise = DataService.getItemToEditContainer(stamp);
     promise.then(function(response) {
-      console.log(response);
       edCtrl.item = response;
     });
   }

@@ -47,6 +47,7 @@ function EditItemsComponentController (DataService, $scope) {
     item.data.nozzle_avg = Math.round(((parseFloat(item.data.diameter_three) + parseFloat(item.data.diameter_four))/2).toPrecision(4)*100)/100;
     item.data.stamp_avg = Math.round(((parseFloat(item.data.diameter_one) + parseFloat(item.data.diameter_two))/2).toPrecision(4)*100)/100;
     item.data.pipe = item.pipe;
+    console.log(item.data);
     var promise = DataService.putInfo(item)
     .then($ctrl.remove(index));
   }
@@ -69,13 +70,13 @@ function EditItemComponentController (DataService, $scope) {
       ongoing: 'ongoing',
       completed: 'completed',
       checked: 'checked',
-      defect: 'defect'
+      defect: 'defect',
+      reserve: 'reserve'
     }
   }
 
   $ctrl.putInfo = function(item, index) {
-    var hight = 3510;
-    var density = 1.8;
+    console.log(item);
     item.data = {};
     item.data.container = item.container;
     item.data.status = $ctrl.data.status;

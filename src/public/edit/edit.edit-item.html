@@ -27,6 +27,7 @@
           <option value="completed">completed</option>
           <option value="checked">checked</option>
           <option value="defect">defect</option>
+          <option value="reserve">reserve</option>
         </select><br>
       </div>
       <div class="col-sm-9">
@@ -36,7 +37,7 @@
     <button class="btn btn-success"
         type="button"
         ng-disabled="itemForm.$invalid || itemForm.$pending"
-        ng-click="$ctrl.putInfo($ctrl.item, $index);">
+        ng-click="$ctrl.putInfo(item, $index);">
         Send
       </button>
   </form>   
