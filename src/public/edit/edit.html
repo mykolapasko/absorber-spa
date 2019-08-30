@@ -3,7 +3,7 @@
    <p class="text-center">Edit section</p>
 </div>
 <div class="container">
-	<div class="row-content">
+	<div class="row">
 		<div class="col-sm-6">
 			<form class="navbar-form navbar-left" novalidate>
 				<div class="form-group">
@@ -47,7 +47,7 @@
 				<button 
 					class="btn btn-warning"
 					ng-disabled = "!edCtrl.stamp"
-      		ng-click="edCtrl.getItemsToEditContainer(edCtrl.stamp);">
+      		ng-click="edCtrl.getItemToEditContainer(edCtrl.stamp);">
       		Search
 			   </button>
 			</form>
@@ -56,10 +56,12 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-6 col-sm-offset-2">
+		<div class="col-sm-6">
 			<edit-items 
 				items="edCtrl.items">			
 			</edit-items>
+		</div>
+		<div class="col-sm-6">
 			<edit-item 
 				item="edCtrl.item">			
 			</edit-item>

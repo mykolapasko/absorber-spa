@@ -16,11 +16,11 @@ function EditController(DataService, $scope) {
     });
   }
 
-  edCtrl.getItemsToEditContainer = function(stamp) {
-    var promise = DataService.getItemsToEditContainer(stamp);
+  edCtrl.getItemToEditContainer = function(stamp) {
+    var promise = DataService.getItemToEditContainer(stamp);
     promise.then(function(response) {
       console.log(response);
-      edCtrl.items = response;
+      edCtrl.item = response;
     });
   }
 

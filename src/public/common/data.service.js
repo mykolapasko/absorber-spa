@@ -263,7 +263,7 @@ service.getItemsToEdit = function (banch, pipe) {
 
   }
 
-  service.getItemsToEditContainer = function (stamp) {
+  service.getItemToEditContainer = function (stamp) {
   return $http({
       method: "GET",
       url:("http://localhost:3000/tasks")
