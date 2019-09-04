@@ -25,8 +25,10 @@ function WeightItemsComponentController ($scope, DataService) {
       console.log(weight);
       return weight;
     }).then(function(weight) {
-      if (parseFloat(weight) < 1750) {
+      if (parseFloat(weight) < 600) {
         item.data = {};
+        item.data.pipe_weight = weight;
+        console.log(item.data);
         item.weight_1 = weight;
       } else {
         item.weight_2 = weight;

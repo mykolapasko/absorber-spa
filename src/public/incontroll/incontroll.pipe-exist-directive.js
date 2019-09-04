@@ -13,7 +13,7 @@ function PipeExist($http, $q) {
     require: 'ngModel',
     link: function(scope, element, attrs, ngModel) {
       ngModel.$asyncValidators.PipeExist = function(modelValue, viewValue) {
-        return $http.get('http://localhost:3000/tasks')
+        return $http.get('http://192.168.0.1:3000/tasks')
         .then(function(response) {
           return response.data.filter(function(item) {
             return item.serial === parseInt(scope.inCtrl.serial);

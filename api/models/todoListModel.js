@@ -107,6 +107,11 @@ var ElementSchema = new Schema({
   container: {
     type: Number,
     default: null
+  },
+  
+  pipe_weight: {
+    type: Number,
+    default: null
   }
 },
 

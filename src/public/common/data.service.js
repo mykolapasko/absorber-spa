@@ -12,7 +12,7 @@ function DataService($http, $rootScope) {
   service.getItemsToReport = function () {
     var response = $http({
       method: "GET",
-      url:("http://localhost:3000/tasks")
+      url:("http://192.168.0.1:3000/tasks")
     });
     return response.then(function(response) {
       return response.data
@@ -24,7 +24,7 @@ function DataService($http, $rootScope) {
     var putData = put_data.data;
     return $http({
       method: "PUT",
-      url: ("http://localhost:3000/tasks/" + put_data._id),
+      url: ("http://192.168.0.1:3000/tasks/" + put_data._id),
       data: putData,
       headers: {'Content-Type': 'application/json'}
     }).then( function(response) {
@@ -40,7 +40,7 @@ function DataService($http, $rootScope) {
     var postData = JSON.stringify(post_data);
     return $http({
       method: "POST",
-      url: ("http://localhost:3000/tasks"),
+      url: ("http://192.168.0.1:3000/tasks"),
       data: postData,
       headers: {'Content-Type': 'application/json'}
     }).then(function(response) {
@@ -57,7 +57,7 @@ function DataService($http, $rootScope) {
   service.getItemsToInControll = function () {
     var response = $http({
       method: "GET",
-      url:("http://localhost:3000/tasks")
+      url:("http://192.168.0.1:3000/tasks")
     });
     return response
       .then(function(response) {
@@ -75,7 +75,7 @@ function DataService($http, $rootScope) {
   service.getItemsToNozzle = function (banch, pipe) {
     var response = $http({
       method: "GET",
-      url:("http://localhost:3000/tasks")
+      url:("http://192.168.0.1:3000/tasks")
     });
     return response
       .then(function(response) {
@@ -91,7 +91,7 @@ function DataService($http, $rootScope) {
   service.getItemsToWeight = function (searchTerm) {
     return $http({
       method: "GET",
-      url:("http://localhost:3000/tasks")
+      url:("http://192.168.0.1:3000/tasks")
     }).then(function(response) {
       console.log(response);
       var filteredArray = response.data.filter(function(element) {
@@ -106,24 +106,24 @@ function DataService($http, $rootScope) {
   }
 
 
-  service.getElementWeight = function (itemId) {
-    return $http({
-      method: "GET",
-      url: ("http://localhost:3000/tasks/" + itemId)
-    }).then(function (response) {
-      return response.data;
-    });
-  }
-
-
-  // service.getElementWeight = function () {
+  // service.getElementWeight = function (itemId) {
   //   return $http({
   //     method: "GET",
-  //     url: ("http://localhost:3000/weight")
-  //   }).then(function (weight) {
-  //     return weight.data;
+  //     url: ("http://192.168.0.1:3000/tasks/" + itemId)
+  //   }).then(function (response) {
+  //     return response.data;
   //   });
   // }
+
+
+  service.getElementWeight = function () {
+    return $http({
+      method: "GET",
+      url: ("http://192.168.0.1:3000/weight")
+    }).then(function (weight) {
+      return weight.data;
+    });
+  }
 
   // Weight end
 
@@ -132,7 +132,7 @@ function DataService($http, $rootScope) {
   service.getItemsToHeight = function(searchTerm) {
     return $http({
       method: "GET",
-      url:("http://localhost:3000/tasks")
+      url:("http://192.168.0.1:3000/tasks")
     }).then(function(response) {
       var filteredArray = response.data.filter(function(element) {
         return element.banch === parseInt(searchTerm) && element.status[0] === 'pending';
@@ -149,7 +149,7 @@ function DataService($http, $rootScope) {
   service.getElementHight = function (itemId) {
     return $http({
       method: "GET",
-      url:("http://localhost:3000/tasks/" + itemId),
+      url:("http://192.168.0.1:3000/tasks/" + itemId),
     }).then(function(response) {
       return response.data;
     });
@@ -163,7 +163,7 @@ function DataService($http, $rootScope) {
 service.getItemsToOutControll = function (searchTerm) {
     return $http({
       method: "GET",
-      url:("http://localhost:3000/tasks")
+      url:("http://192.168.0.1:3000/tasks")
     }).then(function(response) {
       console.log(response);
       var filteredArray = response.data.filter(function(element) {
@@ -180,7 +180,7 @@ service.getItemsToOutControll = function (searchTerm) {
   service.getContainer = function () {
     return $http({
       method: "GET",
-      url: ("http://localhost:3000/tasks")
+      url: ("http://192.168.0.1:3000/tasks")
     }).then(function(response){
       var sorted_response = response.data.sort(function(a,b) {
           return b.container - a.container;
@@ -215,7 +215,7 @@ service.getItemsToOutControll = function (searchTerm) {
 service.getItemsToPackage = function(searchTerm) {
   return $http({
     method: "GET",
-    url: ("http://localhost:3000/tasks")
+    url: ("http://192.168.0.1:3000/tasks")
   }).then(function(response) {
     return response.data.filter(function(item) {
       return item.container === searchTerm && item.status[0] !== 'checked';
@@ -234,7 +234,7 @@ service.getItemsToPackage = function(searchTerm) {
   service.getItemsToPdf = function(searchTerm) {
     return $http({
       method: "GET",
-      url: ("http://localhost:3000/tasks")
+      url: ("http://192.168.0.1:3000/tasks")
     }).then(function(response) {
       return response.data.filter(function(item) {
         return item.container === searchTerm && item.status[0] === "checked";
@@ -253,7 +253,7 @@ service.getItemsToPackage = function(searchTerm) {
 service.getItemsToEdit = function (banch, pipe) {
   return $http({
       method: "GET",
-      url:("http://localhost:3000/tasks")
+      url:("http://192.168.0.1:3000/tasks")
     }).then(function(response) {
       var filteredArray = response.data.filter(function(item) {
         return item.banch === parseInt(banch) && item.pipe === parseInt(pipe) ;
@@ -266,7 +266,7 @@ service.getItemsToEdit = function (banch, pipe) {
   service.getItemToEditContainer = function (stamp) {
   return $http({
       method: "GET",
-      url:("http://localhost:3000/tasks")
+      url:("http://192.168.0.1:3000/tasks")
     }).then(function(response) {
       console.log(response);
       var filteredArray = response.data.filter(function(item) {
