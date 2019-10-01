@@ -1,9 +1,8 @@
 <div class="container">
   <div class="col-xs-12">
-    <div  class="row-content" 
-          id="item-weight"
+    <div  class="row-content">
+      <div ng-class="{'item-weight': !tem.weight_1, 'item-weight-yellow': item.weight_1}"
           ng-repeat="item in $ctrl.items">
-      <form name="itemForm" novalidate>
         <div class="col-sm-2">
           <h1 class="text-center">{{item.pipe}}</h1>
         </div>
@@ -11,6 +10,7 @@
           <h4>Weight_1: {{item.weight_1}}</h4>
           <h4>Weight_2: {{item.weight_2}}</h4>
           <h4>Delta: {{item.weight_delta}}</h4>
+          <h4>Stamp: {{item.data.stamp}}</h4>
         </div>
         <div class="col-sm-3">
           <h4>Abs. weight: {{item.data.absorber_weight}}</h4>
@@ -37,7 +37,8 @@
             </button>
           </div>
         </div>
-      </form>
+        
+      </div> 
     </div>
   </div>
 </div>

@@ -172,7 +172,7 @@ service.getItemsToOutControll = function (searchTerm) {
       return filteredArray;
     }).then(function(response) {
       return response.sort(function(a,b) {
-        return a.diameter_avg - b.diameter_avg;
+        return a.stamp - b.stamp;
       });
     });
   }

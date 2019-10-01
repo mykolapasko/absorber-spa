@@ -12,7 +12,7 @@ body {
 }
 
 h1 {
-  padding-top: 10px;
+  padding-top: 15px;
 }
 
 footer {
@@ -69,13 +69,22 @@ input.ng-touched.ng-valid {
   content: '\25bc';   /*BLACK DOWN-POINTING TRIANGLE*/
 }
 
-#item-weight {
+.item-weight {
   background-color: #999999;
   margin: 15px;
   border-radius: 20px;
   border: 1px solid black;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  height: 100px;
+  height: 125px;
+}
+
+.item-weight-yellow {
+  background-color: #FFFF66;
+  margin: 15px;
+  border-radius: 20px;
+  border: 1px solid black;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  height: 125px;
 }
 
 .vertical-align {
