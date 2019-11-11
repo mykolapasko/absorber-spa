@@ -1,8 +1,8 @@
 <div class="col-xs-3"
          id="height-item"
          ng-repeat="item in $ctrl.items">
-         <h1 class="text-center" ><span class="label label-danger">{{item.pipe}}</span></h1>
-         {{value}}/{{item.data.absorber_hight}}/{{item.diameter_avg}}
+         <h1 class="text-center" ><span class="label label-danger">{{item.pipe}} / {{item.diameter_avg}}</span></h1>
+         {{value}}/{{item.data.absorber_hight}}
          <div class="row-content">
            <div class="col-xs-6">
             <form>

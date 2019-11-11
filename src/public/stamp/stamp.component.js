@@ -16,13 +16,6 @@ StampItemsComponentController.$inject = ['DataService', '$scope', '$rootScope'];
 function StampItemsComponentController (DataService, $scope, $rootScope) {
   var $ctrl = this;
 
-  $ctrl.$onInit = function (){
-    console.log($ctrl);
-  }
-
-  $ctrl.$onChanges = function(){
-  }
-
   $ctrl.putInfo = function(item, index) {
     item.data = {};
     item.data.stamp = item.stamp;

@@ -19,7 +19,6 @@ function StampController(DataService, $rootScope, $scope) {
     var promise = DataService.getItemsToNozzle(banch, pipe);
     promise.then(function(response) {
       if (! stCtrl.added_items.some(function(item){return item._id === response[0]._id}))
-      stCtrl.items = response;
       {
         stCtrl.added_items.push(response[0]);
       }
