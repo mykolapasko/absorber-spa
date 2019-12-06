@@ -128,3 +128,11 @@ input.ng-touched.ng-valid {
 #package-item button {
 margin-left: 25px;
 }
+
+#agent-item {
+  height: 80px;
+  width: 80px;
+  background-color: #bbb;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}

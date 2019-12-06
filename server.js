@@ -4,6 +4,7 @@ var express = require('express'),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
   Task = require('./api/models/todoListModel'),
+  Agents = require('./api/models/agentsModel'),
   bodyParser = require('body-parser'),
   SerialPort = require('serialport');
 
@@ -40,8 +41,10 @@ app.get('/weight', function(req, res) {
 //Serialport finish
 
 
-var routes = require('./api/routes/todoListRoutes');
+var routes = require('./api/routes/todoListRoutes.js');
+var agents = require('./api/routes/agentsRoutes.js');
 routes(app);
+agents(app);
 
 app.use(function(req, res) {
   res.status(404).send({url: req.originalUrl + ' not found'})

@@ -28,14 +28,16 @@ function WeightItemsComponentController ($scope, DataService) {
       if (parseFloat(weight) < 600) {
         item.data = {};
         item.data.pipe_weight = weight;
-        console.log(item.data);
         item.weight_1 = weight;
+        item.productionStarted = Date.now();
       } else {
+        item.productionFinished = Date.now();
         item.weight_2 = weight;
         item.weight_3 = parseFloat((item.weight_2 - item.weight_1 - 0.70).toPrecision(4));
         item.weight_delta = parseFloat((item.weight_3 - item.abs_weight_calc).toPrecision(4));
         item.data.absorber_weight = parseFloat((item.abs_weight_calc + item.weight_delta).toPrecision(4));
         item.data.status = ["ongoing"];
+        item.data.productionInterval = (item.productionFinished - item.productionStarted)/1000;
         console.log(item.data);
       }
     });

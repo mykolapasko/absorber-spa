@@ -279,6 +279,19 @@ service.getItemsToEdit = function (banch, pipe) {
 
 // Edit end
 
+// Agent start
+  service.getAgents = function () {
+    return $http({
+      method: "GET",
+      url:("http://192.168.0.1:3000/agents")
+    }).then(function(response) {
+      console.log(response.data);
+      return response.data;
+    });
+  }
+
+// Agent end
+
 
 }
 

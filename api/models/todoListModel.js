@@ -112,6 +112,11 @@ var ElementSchema = new Schema({
   pipe_weight: {
     type: Number,
     default: null
+  },
+
+  productionInterval: {
+    type: Number,
+    default: null
   }
 },
 

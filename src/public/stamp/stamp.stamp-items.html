@@ -9,10 +9,10 @@
   </div> 
   <form name="itemForm" 
         novalidate
-        id="diameter">
-    <div></div>    
+        id="diameter"> 
     <div class="col-sm-3">
       <input placeholder="Stamp"
+      ng-pattern="/^[0-9][^\.]*$/"
       name="stamp" 
       type="number" 
       class="form-control"

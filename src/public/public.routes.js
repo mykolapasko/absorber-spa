@@ -83,6 +83,15 @@ function routeConfig ($stateProvider) {
           return DataService.getItemsToReport();
         }]
       }
+    }).state('public.agent', {
+      url: '/agent',
+      templateUrl: 'public/agent/agent.html',
+      controller: 'AgentController as agCtrl',
+      resolve: {
+        agents: ['DataService', function (DataService) {
+          return DataService.getAgents();
+        }]
+      }
     });
 
   }
