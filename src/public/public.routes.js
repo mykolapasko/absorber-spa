@@ -92,8 +92,13 @@ function routeConfig ($stateProvider) {
           return DataService.getAgents();
         }]
       }
+    }).state('public.agent.details', {
+      templateUrl: 'public/agent/deck-details.html',
+      controller: 'DeckController as deckCtrl',
+      params: {
+        deck: null
+      }
     });
-
   }
 
 

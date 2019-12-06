@@ -22,7 +22,7 @@ var AgentSchema = new Schema({
 	},
 
 	deck: {
-		 type: Number,
+		 type: String,
 		 default: null
 	},
 

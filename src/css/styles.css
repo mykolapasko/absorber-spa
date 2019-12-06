@@ -129,10 +129,22 @@ input.ng-touched.ng-valid {
 margin-left: 25px;
 }
 
-#agent-item {
+.agent-item {
   height: 80px;
   width: 80px;
-  background-color: #bbb;
+  background-color: #28a745;
   border-radius: 50%;
-  margin-bottom: 15px;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.agent-item-filled {
+  height: 80px;
+  width: 80px;
+  background-color: #dc3545;
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }

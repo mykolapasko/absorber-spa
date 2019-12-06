@@ -1,0 +1,10 @@
+<div class="row">
+	<div class="container">
+		<div  ng-repeat="agent in deckCtrl.agents">
+			<a href="" ng-click="deckCtrl.getWeightAndPutInfoAfter(agent, $index);" class="col-sm-1 agent-item"
+			ng-mouseover="style={'cursor':'pointer'}"
+			ng-class="{'col-sm-1 agent-item': agent.isEmpty, 'col-sm-1 agent-item-filled': !agent.isEmpty}"
+			></a>
+  		</div>
+	</div>
+</div>

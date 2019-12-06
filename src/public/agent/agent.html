@@ -4,10 +4,15 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-12">
-			<agent-items 
-				agents="agCtrl.agents">
-			</agent-items>	
-		</div>
+  		<div class="col-md-4 col-md-offset-4">
+  			<ul class="nav nav-pills nav-justified">
+			    <li><a ui-sref="public.agent.details({deck: 'blue'})">Blue Deck</a></li>
+			    <li><a ui-sref="public.agent.details({deck: 'yellow'})">Yellow Deck</a></li>
+		 	</ul>
+  		</div>
+	</div>
+	<div>
+		<ui-view>
+      	</ui-view>
 	</div>
 </div>
