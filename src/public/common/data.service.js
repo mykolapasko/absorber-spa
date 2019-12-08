@@ -20,7 +20,7 @@ function DataService($http, $rootScope) {
   }
 
 
-  service.putInfo = function (put_data) {;
+  service.putInfo = function (put_data) {
     var putData = put_data.data;
     return $http({
       method: "PUT",
@@ -289,6 +289,22 @@ service.getItemsToEdit = function (banch, pipe) {
       return response.data;
     });
   }
+
+  service.putInfo = function (put_data) {
+    var putData = put_data.data;
+    return $http({
+      method: "PUT",
+      url: ("http://localhost:3000/agents/" + put_data._id),
+      data: putData,
+      headers: {'Content-Type': 'application/json'}
+    }).then( function(response) {
+      console.log("success!", response.data);
+    }, function(response) {
+      console.log("failed!");
+    });
+  }
+
+
 
 // Agent end
 

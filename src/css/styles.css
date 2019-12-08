@@ -148,3 +148,24 @@ margin-left: 25px;
   margin-left: 5px;
   margin-right: 5px;
 }
+
+.blue-deck {
+  border: 10px solid #1E90FF;
+  border-radius: 30px;
+  background-color: #1E90FF;
+}
+
+.yellow-deck {
+  border: 10px solid #ffc107;
+  border-radius: 30px;
+  background-color: #ffc107;
+}
+
+#deck {
+  margin-top: 20px;
+}
+
+#agent {
+  text-decoration: none;
+  color: black;
+}
