@@ -11,3 +11,16 @@
 	<button  class="btn btn-success"
 			ng-click="pdfCtrl.getItemsToPdf(pdfCtrl.searchTerm);">PDF</button>
 </form>
+<form class="navbar-form navbar-left" novalidate>
+	<div class="form-group">
+		<input placeholder="Banch" 
+		class="form-control"
+		ng-model="pdfCtrl.banch"
+		type="number"
+		ng-pattern="/^[0-9][^\.]*$/"
+		ng-min="1"
+		required>
+	</div>
+	<button  class="btn btn-success"
+			ng-click="pdfCtrl.getBanchItemsToPdf(pdfCtrl.banch);">PDF</button>
+</form>

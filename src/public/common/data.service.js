@@ -245,6 +245,23 @@ service.getItemsToPackage = function(searchTerm) {
       })
     });
   }
+
+  service.getBanchItemsToPdf = function(searchTerm) {
+    return $http({
+      method: "GET",
+      url: ("http://localhost:3000/tasks")
+    }).then(function(response) {
+      return response.data.filter(function(item) {
+        return item.banch === searchTerm;
+      });
+    }).then(function(response) {
+      return response.sort(function(a,b) {
+        return a.pipe - b.pipe;
+      })
+    });
+  }
+
+
 //PDF end
 
 
@@ -303,7 +320,6 @@ service.getItemsToEdit = function (banch, pipe) {
       console.log("failed!");
     });
   }
-
 
 
 // Agent end
