@@ -13,19 +13,20 @@ function DeckController($stateParams, agents, DataService) {
 
   deckCtrl.color = $stateParams.deck;
 
-  deckCtrl.getRandomArbitrary = function(min, max) {
-    return Math.random() * (max - min) + min;
+  deckCtrl.getWeightAndPutInfoAfter = function(agent, index) {
+    var promise = DataService.getAgentWeight();
+    promise.then(function(response) {
+      var weight = parseFloat(response.slice(2,8));
+      agent.weight = weight;
+      agent.isEmpty = false;
+      agent.data = {};
+      agent.data.weight = weight;
+      agent.data.isEmpty = agent.isEmpty;
+      DataService.putInfoAgents(agent);
+    });
   }
 
-  deckCtrl.getWeightAndPutInfoAfter = function(agent, index) {
-    agent.weight = parseFloat(deckCtrl.getRandomArbitrary(200, 250).toPrecision(4));
-  	agent.isEmpty = false;
-    agent.data = {};
-    agent.data.weight = agent.weight;
-    agent.data.isEmpty = agent.isEmpty;
-    console.log(agent);
-    var promise = DataService.putInfo(agent);
-  }
+
 
 }
 

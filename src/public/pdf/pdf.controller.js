@@ -92,12 +92,12 @@ function PDFController($scope, DataService) {
                     text:'pipe',
                     fontSize: 15
                   }, 
-                  {
-                    text:'nozzle',
-                    fontSize:15
-                  },
                   { 
                     text:'stamp',
+                    fontSize:15
+                  },
+                  {
+                    text:'nozzle',
                     fontSize:15
                   }, 
                   {
@@ -122,7 +122,11 @@ function PDFController($scope, DataService) {
           var dataRow = [];
 
           columns.forEach(function(column) {
+            if (row[column]) {
               dataRow.push(row[column].toString());
+            } else {
+              dataRow.push('');
+            }
           })
 
           body.push(dataRow);
@@ -160,7 +164,7 @@ function PDFController($scope, DataService) {
           },
          
 
-          table(externalDataRetrievedFromServer, ['pipe', 'nozzle', 'stamp', 'nozzle_avg', 'stamp_avg', ,'diameter_avg','serial'])
+          table(externalDataRetrievedFromServer, ['pipe', 'stamp', 'nozzle', 'nozzle_avg', 'stamp_avg', ,'diameter_avg','serial'])
       ],
       styles: {
         header: {

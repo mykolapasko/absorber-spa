@@ -5,8 +5,8 @@ var express = require('express'),
   mongoose = require('mongoose'),
   Task = require('./api/models/todoListModel'),
   Agents = require('./api/models/agentsModel'),
-  bodyParser = require('body-parser');
-  // SerialPort = require('serialport');
+  bodyParser = require('body-parser'),
+  SerialPort = require('serialport');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://127.0.0.1/dbelements');
@@ -17,27 +17,27 @@ app.use(bodyParser.json());
 app.use('/static', express.static('src'));
 
 //Serialport start
-// const ByteLength = SerialPort.parsers.ByteLength;
-// const serial_port = new SerialPort('COM1', 
-// 	{ 
-// 		boudrate: 9600,
-// 		dataBits: 7
-// 	});
+const ByteLength = SerialPort.parsers.ByteLength;
+const serial_port = new SerialPort('COM1', 
+	{ 
+		boudrate: 9600,
+		dataBits: 7
+	});
 
-// const parser = serial_port.pipe(new ByteLength({length: 14}));
-// let count = 0;
-// let lastresult = '';
-// function counter(data){
-//   if(++count == 5){
-//     lastresult = data;
-//     count = 0;
-//   }
-// }
+const parser = serial_port.pipe(new ByteLength({length: 14}));
+let count = 0;
+let lastresult = '';
+function counter(data){
+  if(++count == 5){
+    lastresult = data;
+    count = 0;
+  }
+}
 
-// parser.on('data', counter);
-// app.get('/weight', function(req, res) {
-// 	res.send(lastresult);
-// });
+parser.on('data', counter);
+app.get('/weight', function(req, res) {
+	res.send(lastresult);
+});
 //Serialport finish
 
 
