@@ -98,6 +98,16 @@ function routeConfig ($stateProvider) {
       params: {
         deck: null
       }
+    }).state('public.assembly', {
+      url: '/assembly',
+      templateUrl: 'public/assembly/assembly.html',
+      controller: 'AssemblyController as asCtrl'
+    }).state('public.assembly.banch', {
+      component: 'banch',
+      templateUrl: 'public/assembly/banch.html'
+    }).state('public.assembly.agents', {
+      component: 'agents',
+      templateUrl: 'public/assembly/agents.html'
     });
   }
 

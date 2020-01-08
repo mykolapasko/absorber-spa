@@ -1,0 +1,44 @@
+<div class="jumbotron"
+	id="section-jumb">
+   <p class="text-center">Assembly section</p>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<form class="navbar-form navbar-left" novalidate>
+				<div class="form-group">
+					<input placeholder="Banch" 
+						class="form-control"
+						ng-model="asCtrl.banch"
+						type="number"
+						ng-pattern="/^[0-9][^\.]*$/"
+						ng-min="1"
+						ng-max="99"
+						required>
+				</div>
+				<div class="form-group">
+					<label>
+		                <input type="radio" ng-model="value" value="blue" ng-change="asCtrl.newValue(value)">
+		                Blue Deck
+		             </label>
+				</div>
+				<div class="form-group">
+					<label>
+		                <input type="radio" ng-model="value" value="yellow" ng-change="asCtrl.newValue(value)">
+		                Yellow Deck
+	              	</label>
+				</div>
+				<button 
+					class="btn btn-warning"
+		      		ng-click="asCtrl.getCertainBanchAndDeck(asCtrl.banch, asCtrl.deck);">
+		      		Search
+			   </button>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<ui-view></ui-view>
+	</div>
+</div>
