@@ -3,18 +3,18 @@
 'use strict';
 
 angular.module('public')
-.component('agents', {
-  controller: AgentsComponentController,
+.component('weightItems', {
+  templateUrl: 'public/weight/weight.weight-items.html',
+  controller: AssemblyDetailsComponentController,
   bindings: {
-    agents: '<'
+    items: '<'
   }
 });
 
 //Component controller start
-AgentsComponentController.$inject = ['$scope', 'DataService'];
-function AgentsComponentController ($scope, DataService) {
+WeightItemsComponentController.$inject = ['$scope', 'DataService'];
+function WeightItemsComponentController ($scope, DataService) {
   var $ctrl = this;
-
 
   $ctrl.putInfo = function(myData, myIndex) {
     var promise = DataService.putInfo(myData);
