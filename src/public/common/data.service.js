@@ -106,24 +106,24 @@ function DataService($http, $rootScope) {
   }
 
 
-  // service.getElementWeight = function (itemId) {
-  //   return $http({
-  //     method: "GET",
-  //     url: ("http://localhost:3000/tasks/" + itemId)
-  //   }).then(function (response) {
-  //     return response.data;
-  //   });
-  // }
-
-
-  service.getElementWeight = function () {
+  service.getElementWeight = function (itemId) {
     return $http({
       method: "GET",
-      url: ("http://localhost:3000/weight")
-    }).then(function (weight) {
-      return weight.data;
+      url: ("http://localhost:3000/tasks/" + itemId)
+    }).then(function (response) {
+      return response.data;
     });
   }
+
+
+  // service.getElementWeight = function () {
+  //   return $http({
+  //     method: "GET",
+  //     url: ("http://localhost:3000/weight")
+  //   }).then(function (weight) {
+  //     return weight.data;
+  //   });
+  // }
 
   // Weight end
 
