@@ -25,7 +25,7 @@ function PDFController($scope, DataService) {
 
     var doted_list = [];
     pdfCtrl.pdfContent.forEach(function(item) {
-    	doted_list.push(' ' + item.stamp.toString() + '.19');
+    	doted_list.push(' ' + item.stamp.toString() + '.20');
     });
 
     var dd = {
@@ -46,7 +46,7 @@ function PDFController($scope, DataService) {
           	fontSize: 14
           },
           {
-          	text: 'Партия №' + pdfCtrl.pdfContent[0].container + '\nДоговор № ' +
+          	text: 'Партия №' + pdfCtrl.searchTerm + '\nДоговор № ' +
           	'____________________________\n\n'
           },
           {
