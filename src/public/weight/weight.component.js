@@ -51,10 +51,14 @@ function WeightItemsComponentController ($scope, DataService) {
     item.data = {};
     if (!item.weight_1) {
       item.weight_1 = parseFloat($ctrl.getRandomArbitrary(445, 507).toPrecision(4));
+      item.productionStarted = Date.now();
     } else {
+      item.productionFinished = Date.now();
       item.weight_2 = parseFloat(($ctrl.getRandomArbitrary(item.abs_weight_calc, item.abs_weight_calc + 3) + item.weight_1).toPrecision(4));
       item.weight_diff = parseFloat((item.weight_2 - item.weight_1 - item.abs_weight_calc).toPrecision(2));
       item.data.absorber_weight = parseFloat((item.abs_weight_calc + item.weight_diff).toPrecision(4));
+      item.data.status = ["ongoing"];
+      item.data.productionInterval = (item.productionFinished - item.productionStarted)/1000;
     }
 
     console.log('item.weight_1: ', item.weight_1, 'item.weight_2: ', item.weight_2, 'item.weight_diff: ', item.weight_diff );
