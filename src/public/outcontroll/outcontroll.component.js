@@ -26,13 +26,16 @@ function OutControllItemsComponentController ($scope, DataService) {
   //   });
   // }
 
+  $ctrl.getRandomArbitrary = function(min, max) {
+    return Math.random() * (max - min) + min;
+  }
 
   $ctrl.getElementWeight = function(item, index) {
     var promise = DataService.getElementWeight(item._id);
     promise.then(function(response) {
       console.log(response);
       item.data = {};
-      item.data.element_weight = response.abs_weight_calc + 1700;
+      item.data.element_weight = parseFloat(response.absorber_weight + 1700);
     });
   }
 

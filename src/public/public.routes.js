@@ -102,14 +102,26 @@ function routeConfig ($stateProvider) {
       url: '/assembly',
       templateUrl: 'public/assembly/assembly.html',
       controller: 'AssemblyController as asCtrl'
-    }).state('public.assembly.banch', {
-      component: 'banch',
-      templateUrl: 'public/assembly/banch.html'
-    }).state('public.assembly.agents', {
-      component: 'agents',
-      templateUrl: 'public/assembly/agents.html'
+    }).state('public.assembly.details', {
+      views: {
+        'banch': {
+          component: 'banchItems',
+          resolve: {
+            items: ['$stateParams', 'DataService', function($stateParams, DataService) {
+              return DataService.getBanchItems($stateParams.banch);
+            }]
+          }
+        },
+        'agents': {
+          component: 'agents',
+          resolve: {
+            agents: ['$stateParams', 'DataService', function($stateParams, DataService) {
+              return DataService.getDeckAgents($stateParams.deck);
+            }]
+          }
+        }
+      }
     });
   }
-
 
 })();

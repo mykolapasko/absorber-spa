@@ -302,7 +302,6 @@ service.getItemsToEdit = function (banch, pipe) {
       method: "GET",
       url:("http://localhost:3000/agents")
     }).then(function(response) {
-      console.log(response.data);
       return response.data;
     });
   }
