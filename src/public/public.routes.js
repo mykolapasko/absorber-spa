@@ -102,25 +102,12 @@ function routeConfig ($stateProvider) {
       url: '/assembly',
       templateUrl: 'public/assembly/assembly.html',
       controller: 'AssemblyController as asCtrl'
-    }).state('public.assembly.details', {
-      views: {
-        'banch': {
-          component: 'banchItems',
-          resolve: {
-            items: ['$stateParams', 'DataService', function($stateParams, DataService) {
-              return DataService.getBanchItems($stateParams.banch);
-            }]
-          }
-        },
-        'agents': {
-          component: 'agents',
-          resolve: {
-            agents: ['$stateParams', 'DataService', function($stateParams, DataService) {
-              return DataService.getDeckAgents($stateParams.deck);
-            }]
-          }
-        }
-      }
+    }).state('public.assembly.claddings', {
+      url: '/claddings',
+      templateUrl: 'public/assembly/claddings.html'
+    }).state('public.assembly.agents', {
+      url: '/agents',
+      templateUrl: 'public/assembly/agents.html'
     });
   }
 
