@@ -17,6 +17,8 @@ function CladdingsComponentController($scope, $state, $stateParams){
 
   $ctrl.$onInit = function() {
     console.log("Component call!");
+    console.log('$stateParams: ', $stateParams);
+    console.log('$state: ', $state);
   };
 };
 

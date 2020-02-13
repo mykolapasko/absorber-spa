@@ -20,10 +20,9 @@ function AssemblyController(DataService, $scope, $stateParams, $state) {
     console.log(asCtrl.deck);
   };
 
-  asCtrl.getStateParams = function(){
-    console.log("$state: ", $state);
-    console.log("$stateParams: ", $stateParams);
-    $state.go('public.assembly.claddings', {banch: asCtrl.banch, deck: asCtrl.deck});
+  asCtrl.goToCladdings = function(banch){
+    console.log("banch: ", banch);   
+    $state.go('public.assembly.claddings', {banch: banch});
   }
 
 }
