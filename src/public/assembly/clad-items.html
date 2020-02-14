@@ -1,20 +1,13 @@
 <div class="row">
-	<p>component!</p>
   <div class="col-sm-2" ng-repeat="item in $ctrl.items">
     <div id="out-item">
       <h2 class="text-center">{{item.pipe}}</h2>
       <div class="container">
-        <!-- <button type="button" 
-                class="btn btn-success btn-sm"
-                ng-click="$ctrl.getElementWeight(item, $index);">
-              Weight
-        </button>
         <button type="button"
-                class="btn btn-danger btn-sm" 
-                ng-if="item.data.element_weight"
-                ng-click="$ctrl.putInfo(item, $index);">
+                class="btn btn-success btn-sm" 
+                ng-click="$ctrl.goToAgents();">
               Send
-        </button> -->
+        </button>
       </div>
     </div>
   </div>

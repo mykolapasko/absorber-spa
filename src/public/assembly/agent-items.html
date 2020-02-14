@@ -1,21 +1,15 @@
-<div class="row">
-	<p>component!</p>
-  <div class="col-sm-2" ng-repeat="agent in $ctrl.agents">
-    <div id="out-item">
-      <h2 class="text-center">{{item.pipe}}</h2>
-      <div class="container">
-        <!-- <button type="button" 
-                class="btn btn-success btn-sm"
-                ng-click="$ctrl.getElementWeight(item, $index);">
-              Weight
-        </button>
-        <button type="button"
-                class="btn btn-danger btn-sm" 
-                ng-if="item.data.element_weight"
-                ng-click="$ctrl.putInfo(item, $index);">
-              Send
-        </button> -->
-      </div>
+<div class="row-content">
+  <div id="deck" ng-class="{'container-fluid blue-deck': $ctrl.color === 'blue', 'container-fluid yellow-deck': $ctrl.color === 'yellow'}">
+    <div  ng-repeat="agent in $ctrl.agents">
+      <a href="" 
+        ng-click="$ctrl.getWeightAndPutInfoAfter(agent, $index);" 
+        class="col-sm-1 agent-item"
+        ng-mouseover="style={'cursor':'pointer'}"
+        ng-class="{'col-sm-1 agent-item': agent.isEmpty, 'col-sm-1 agent-item-filled': !agent.isEmpty}"
+        id="agent">
+        <h4 class="text-center">{{agent.row}}/{{agent.column}}</h4>
+        <h4 class="text-center">{{agent.weight}}</h4>
+      </a>
     </div>
   </div>
 </div>

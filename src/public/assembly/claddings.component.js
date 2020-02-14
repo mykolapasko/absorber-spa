@@ -11,15 +11,17 @@ angular.module('public')
   controller: CladdingsComponentController
 });
 
-CladdingsComponentController.$inject = ['$scope', '$state', '$stateParams'];
-function CladdingsComponentController($scope, $state, $stateParams){
+CladdingsComponentController.$inject = ['$scope', '$state', '$stateParams', '$rootScope'];
+function CladdingsComponentController($scope, $state, $stateParams, $rootScope){
   var $ctrl = this;
 
   $ctrl.$onInit = function() {
-    console.log("Component call!");
-    console.log('$stateParams: ', $stateParams);
-    console.log('$state: ', $state);
+    console.log("banch: ", $scope.$parent.$parent.asCtrl.banch, "deck: ", $scope.$parent.$parent.asCtrl.deck);
   };
+
+  $ctrl.goToAgents = function() {
+    $state.go('public.assembly.agents');
+  }
 };
 
 })();
