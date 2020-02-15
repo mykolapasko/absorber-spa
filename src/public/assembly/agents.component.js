@@ -16,9 +16,11 @@ function AgentsComponentController($scope, $state, $stateParams){
   var $ctrl = this;
 
   $ctrl.$onInit = function() {
-    console.log("Component call!");
-    console.log("$state: ", $state);
+    $ctrl.color = $stateParams.agentData.deck;
+    console.log($stateParams);
   };
+
+
 };
 
 })();

@@ -101,13 +101,39 @@ function routeConfig ($stateProvider) {
     }).state('public.assembly', {
       url: '/assembly',
       templateUrl: 'public/assembly/assembly.html',
-      controller: 'AssemblyController as asCtrl'
+      controller: 'AssemblyController as asCtrl',
+      params: {
+        elementData: {
+          banch: null,
+          id: null,
+          agentWgt: null,
+          status: null
+        },
+        agentData: {
+          isEmpty: null,
+          weight: null,
+          deck: null,
+          id : null
+        }
+      }
     }).state('public.assembly.claddings', {
       url: '/claddings',
-      templateUrl: 'public/assembly/claddings.html'
+      templateUrl: 'public/assembly/claddings.html',
+      controller: 'CladdingsController as cladCtrl',
+      resolve: {
+        items: ['DataService', '$stateParams', function(DataService, $stateParams) {
+          return DataService.getBanchItems($stateParams.elementData.banch);
+        }]
+      }
     }).state('public.assembly.agents', {
       url: '/agents',
-      templateUrl: 'public/assembly/agents.html'
+      templateUrl: 'public/assembly/agents.html',
+      controller: 'AssemblyAgentsController as asagCtrl',
+      resolve: {
+        agents: ['DataService', '$stateParams', function(DataService, $stateParams) {
+          return DataService.getDeckAgents($stateParams.agentData.deck);
+        }]
+      }
     });
   }
 

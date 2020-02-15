@@ -334,6 +334,7 @@ service.getItemsToEdit = function (banch, pipe) {
 
 // Assembly start
 service.getBanchItems = function (banch) {
+  console.log("service banch: ", banch);
     return $http({
       method: "GET",
       url:("http://localhost:3000/tasks")

@@ -20,15 +20,9 @@ function AssemblyController(DataService, $scope, $stateParams, $state) {
     console.log(asCtrl.deck);
   };
 
-  asCtrl.getBanchItems = function(banch) {
-    var promise = DataService.getBanchItems(banch);
-    promise.then(function(response) {
-      asCtrl.items = response;
-    });
-    $state.go('public.assembly.claddings');
+  asCtrl.goToCladdings = function() {
+    $state.go('public.assembly.claddings', {"elementData": {"banch": asCtrl.banch}, "agentData": {"deck": asCtrl.deck}});
   }
-
-
 
 }
 
