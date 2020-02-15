@@ -11,14 +11,31 @@ angular.module('public')
   controller: AgentsComponentController
 });
 
-AgentsComponentController.$inject = ['$scope', '$state', '$stateParams'];
-function AgentsComponentController($scope, $state, $stateParams){
+AgentsComponentController.$inject = ['$scope', '$state', '$stateParams', 'DataService'];
+function AgentsComponentController($scope, $state, $stateParams, DataService){
   var $ctrl = this;
 
   $ctrl.$onInit = function() {
     $ctrl.color = $stateParams.agentData.deck;
-    console.log($stateParams);
+    $ctrl.data = $stateParams;
   };
+
+  $ctrl.putDataAndTransit = function(agent) {
+    $ctrl.data.agentData.id = agent._id;
+    $ctrl.data.elementData.agentWgt = agent.weight;
+    $ctrl.data.elementData.status = ['assembled'];
+    DataService.putElementInfo($ctrl.data.elementData)
+    .then(function(response) {
+      $ctrl.data.agentData.weight = null;
+      $ctrl.data.agentData.isEmpty = true;
+      DataService.putAgentInfo($ctrl.data.agentData)
+      .then(function(response) {
+        console.log($ctrl);
+        console.log($stateParams);
+        $state.go('public.assembly.claddings', {"elementData": {"banch": $stateParams.elementData.banch}, "agentData": {"deck": $stateParams.agentData.deck}});
+      });
+    });
+  }
 
 
 };

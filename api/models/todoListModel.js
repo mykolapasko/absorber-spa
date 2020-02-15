@@ -79,7 +79,7 @@ var ElementSchema = new Schema({
   status: {
     type: [{
       type: String,
-      enum: ['pending', 'ongoing', 'completed', 'checked', 'defect', 'reserve']
+      enum: ['pending', 'ongoing', 'completed', 'checked', 'defect', 'reserve', 'assembled']
     }],
     default: ['pending']
   },
@@ -115,6 +115,11 @@ var ElementSchema = new Schema({
   },
 
   productionInterval: {
+    type: Number,
+    default: null
+  },
+
+  agentWgt: {
     type: Number,
     default: null
   }

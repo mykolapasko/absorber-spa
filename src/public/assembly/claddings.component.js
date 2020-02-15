@@ -21,7 +21,7 @@ function CladdingsComponentController($scope, $state, $stateParams, DataService)
 
   $ctrl.goToAgents = function(item) {
   console.log("item: ", item);
-    $state.go('public.assembly.agents', {"elementData": {"id": item._id}});
+    $state.go('public.assembly.agents', {"elementData": {"id": item._id, "banch": item.banch}});
   }
 };
 

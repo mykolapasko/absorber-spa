@@ -340,12 +340,12 @@ service.getBanchItems = function (banch) {
       url:("http://localhost:3000/tasks")
     }).then(function(response) {
       var filteredArray = response.data.filter(function(element) {
-        return element.banch === parseInt(banch);
+        return element.banch === parseInt(banch) && element.status[0] !== 'assembled';
       });
       return filteredArray;
     }).then(function(response) {
       return response.sort(function(a,b) {
-        return a.stamp - b.stamp;
+        return a.pipe - b.pipe;
       });
     });
   }
@@ -360,6 +360,37 @@ service.getDeckAgents = function (deck) {
         return agent.deck === deck;
       })
       return filteredArray;
+    });
+  }
+
+
+  service.putElementInfo = function (data) {
+    var putData = data;
+    return $http({
+      method: "PUT",
+      url: ("http://localhost:3000/tasks/" + putData.id),
+      data: putData,
+      headers: {'Content-Type': 'application/json'}
+    }).then( function(response) {
+      console.log("success!");
+      return response;
+    }, function(response) {
+      console.log("failed!");
+    });
+  }
+
+service.putAgentInfo = function (data) {
+    var putData = data;
+    return $http({
+      method: "PUT",
+      url: ("http://localhost:3000/agents/" + putData.id),
+      data: putData,
+      headers: {'Content-Type': 'application/json'}
+    }).then( function(response) {
+      console.log("success!", response);
+      return response;
+    }, function(response) {
+      console.log("failed!");
     });
   }
 
