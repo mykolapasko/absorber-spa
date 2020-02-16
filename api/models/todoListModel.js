@@ -122,6 +122,11 @@ var ElementSchema = new Schema({
   agentWgt: {
     type: Number,
     default: null
+  },
+
+  stand: {
+    type: String,
+    default: null
   }
 },
 

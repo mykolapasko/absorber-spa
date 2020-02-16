@@ -50,13 +50,20 @@
                 <input type="radio" ng-model="value" value="64.5" ng-change="$ctrl.newValue(value, $index, item)">
                 64.5
               </label><br/>
-              
             </form>
            </div>
            <div class="col-xs-6">
+            <form>
+              <label>1
+                <input type="radio" ng-model="stand" value="VEDS-100" ng-change="$ctrl.newStand(stand, $index, item)" ng-disabled="!value">
+              </label><br/>
+              <label>2
+                <input type="radio" ng-model="stand" value="VEDS-1000" ng-change="$ctrl.newStand(stand, $index, item)" ng-disabled="!value">
+              </label><br/>
+            </form>
              <button class="btn btn-danger"
-                      ng-disabled="!item.data"
-                      ng-click="$ctrl.putInfo($ctrl.items[$index], $index, $ctrl.value);">
+                      ng-disabled="!(value && stand)"
+                      ng-click="$ctrl.putInfo(item, $index);">
                       Send
             </button>
            </div>

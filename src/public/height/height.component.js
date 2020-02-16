@@ -16,12 +16,19 @@ HeightItemsComponentController.$inject = ['$scope', 'DataService'];
 function HeightItemsComponentController ($scope, DataService) {
   var $ctrl = this;
 
-  $ctrl.value = '';
+  $ctrl.$onInit = function() {
+    $ctrl.value = '';
+    $ctrl.stand = '';
+  };
+
 
   $ctrl.newValue = function(value, index, item) {
-    $ctrl.value = value;
     item.data = {};
     item.data.absorber_hight = parseFloat(415 - parseFloat(value));
+  }
+
+  $ctrl.newStand = function(stand, index, item) {
+    item.data.stand = stand;
   }
 
   $ctrl.putInfo = function(item, index) {
