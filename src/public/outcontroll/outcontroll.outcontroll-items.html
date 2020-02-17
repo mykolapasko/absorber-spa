@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-2" ng-repeat="item in $ctrl.items">
-    <div id="out-item">
+    <div ng-class="{'out-item': !item.data.element_weight, 'out-item-yellow': item.data.element_weight}">
       <h2 class="text-center">{{item.stamp}}</h2>
       <p class="text-center">Weight: {{item.data.element_weight}}</p>
       <div class="container">
