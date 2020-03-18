@@ -134,6 +134,15 @@ function routeConfig ($stateProvider) {
           return DataService.getDeckAgents($stateParams.agentData.deck);
         }]
       }
+    }).state('public.tip', {
+      url: '/tip',
+      templateUrl: 'public/tip/tip.html',
+      controller: 'TipController as tipCtrl',
+      resolve: {
+        tips: ['DataService', function(DataService) {
+          return DataService.getTips();
+        }]
+      }
     });
   }
 

@@ -106,24 +106,24 @@ function DataService($http, $rootScope) {
   }
 
 
-  service.getElementWeight = function (itemId) {
-    return $http({
-      method: "GET",
-      url: ("http://localhost:3000/tasks/" + itemId)
-    }).then(function (response) {
-      return response.data;
-    });
-  }
-
-
-  // service.getElementWeight = function () {
+  // service.getElementWeight = function (itemId) {
   //   return $http({
   //     method: "GET",
-  //     url: ("http://localhost:3000/weight")
-  //   }).then(function (weight) {
-  //     return weight.data;
+  //     url: ("http://localhost:3000/tasks/" + itemId)
+  //   }).then(function (response) {
+  //     return response.data;
   //   });
   // }
+
+
+  service.getElementWeight = function () {
+    return $http({
+      method: "GET",
+      url: ("http://localhost:3000/weight")
+    }).then(function (weight) {
+      return weight.data;
+    });
+  }
 
   // Weight end
 
@@ -393,10 +393,19 @@ service.putAgentInfo = function (data) {
       console.log("failed!");
     });
   }
-
-
 // Assembly finsh
 
+// Tip start
+service.getTips = function () {
+    return $http({
+      method: "GET",
+      url:("http://localhost:3000/tips")
+    }).then(function(response) {
+      console.log(response);
+      return response.data;
+    });
+  }
+// Tip fininsh
 
 }
 
