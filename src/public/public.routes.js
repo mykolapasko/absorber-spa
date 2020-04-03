@@ -37,7 +37,12 @@ function routeConfig ($stateProvider) {
     .state('public.stamp', {
       url: '/stamp',
       templateUrl: 'public/stamp/stamp.html',
-      controller: 'StampController as stCtrl'
+      controller: 'StampController as stCtrl',
+      resolve: {
+        tips: ['DataService', function (DataService) {
+          return DataService.getAvaliableTips();
+        }]
+      }
     })
     .state('public.weight', {
       url: '/weight',

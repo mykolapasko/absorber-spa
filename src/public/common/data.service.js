@@ -69,6 +69,21 @@ function DataService($http, $rootScope) {
 
 // InControll end
 
+//Stamp start
+  service.getAvaliableTips = function () {
+    var response = $http({
+      method: "GET",
+      url: ("http://localhost:3000/tips")
+    });
+    return response
+      .then(function(response) {
+        return response.data.filter(function(item) {
+          return item.assembled === false;
+        })
+      })
+  }
+//Stamp end
+
 
 // Nozzle start
 
@@ -402,7 +417,25 @@ service.getTips = function () {
       url:("http://localhost:3000/tips")
     }).then(function(response) {
       console.log(response);
-      return response.data;
+      return response.data.sort(function(a,b) {
+        return b.id - a.id;
+      });
+    });
+  }
+
+  service.postTipInfo  = function (post_data) {
+    var postData = JSON.stringify(post_data);
+    return $http({
+      method: "POST",
+      url: ("http://localhost:3000/tips"),
+      data: postData,
+      headers: {'Content-Type': 'application/json'}
+    }).then(function(response) {
+      // Broadcasting object after successful POST request, to update itemlist in "incontroll" state of app!
+      $rootScope.$broadcast('item_created', response.data);
+      console.log("success!");
+    }, function(response) {
+      console.log("failed!");
     });
   }
 // Tip fininsh

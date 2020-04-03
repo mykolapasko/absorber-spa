@@ -12,24 +12,33 @@ function TipController($scope, DataService, tips, $rootScope) {
 
   tipCtrl.$onInit = function() {
   	  tipCtrl.data = {};
+      console.log(tips);
       tipCtrl.currentTip = tips[0].id + 1;
   }
 
+  tipCtrl.getRandomArbitrary = function(min, max) {
+     return Math.random() * (max - min) + min;
+    }
+
   tipCtrl.getWeight = function() {
-    console.log("Getting weight!");
+
+    tipCtrl.data.weight = parseFloat(tipCtrl.getRandomArbitrary(169, 171).toPrecision(4));
+    console.log(tipCtrl.data.weight);
   }
+
+  
 
   $scope.$on('item_created', function(event, obj) {
     console.log("POST-hook");
-    // angular.element("#focusPipe").focus();
+    console.log(obj);
+    tipCtrl.currentTip++;
+    angular.element("#focusField").focus();
   });
 
-  tipCtrl.postInfo = function() {
-    var postData = tipCtrl.data;
-    postData.banch = tipCtrl.banch;
-    postData.serial = tipCtrl.serial;
-    postData.stamp_avg = Math.round(((parseFloat(tipCtrl.data.diameter_one) + parseFloat(tipCtrl.data.diameter_two))/2).toPrecision(4)*100)/100;
-    var promise = DataService.postInfo(postData)
+  tipCtrl.postTipInfo = function() {
+    tipCtrl.data.diameter_avg = Math.round(((parseFloat(tipCtrl.data.diameter_one) + parseFloat(tipCtrl.data.diameter_two))/2).toPrecision(4)*100)/100;
+    tipCtrl.data.id = tipCtrl.currentTip;
+    DataService.postTipInfo(tipCtrl.data)
     .then(function() {
       tipCtrl.data = {};
     });

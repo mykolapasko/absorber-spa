@@ -10,7 +10,8 @@
 				<br>
 				<form name="dimensionForm" novalidate>
 					<div class="form-group">
-					  <input  placeholder="D 1" 
+					  <input  placeholder="D 1"
+					  id="focusField" 
 					  class="form-control"
 					  ng-model="tipCtrl.data.diameter_one"
 					  type="number"
@@ -36,8 +37,17 @@
 			<div class="col-sm-5">
 				<h3>D1: {{tipCtrl.data.diameter_one}}</h3>
 				<h3>D2: {{tipCtrl.data.diameter_two}}</h3>
-				<h3>Weight: {{tipCtrl.data.weight}}</h3>
+				<h3>Wgt: {{tipCtrl.data.weight}}</h3>
 			</div>
 		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row-content">
+		<div class="col-sm-5"></div>
+		<button 
+				ng-disabled="!tipCtrl.data.weight"
+				class="btn btn-primary"
+				ng-click="tipCtrl.postTipInfo();">Post</button>
 	</div>
 </div>
