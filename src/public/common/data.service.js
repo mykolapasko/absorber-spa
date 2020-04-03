@@ -438,7 +438,7 @@ service.getTips = function () {
       console.log("failed!");
     });
   }
-// Tip fininsh
+// Tip finish
 
 }
 

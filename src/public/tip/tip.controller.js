@@ -20,12 +20,19 @@ function TipController($scope, DataService, tips, $rootScope) {
      return Math.random() * (max - min) + min;
     }
 
+  // tipCtrl.getWeight = function() {
+
+  //   tipCtrl.data.weight = parseFloat(tipCtrl.getRandomArbitrary(169, 171).toPrecision(4));
+  //   console.log(tipCtrl.data.weight);
+  // }
+
   tipCtrl.getWeight = function() {
-
-    tipCtrl.data.weight = parseFloat(tipCtrl.getRandomArbitrary(169, 171).toPrecision(4));
-    console.log(tipCtrl.data.weight);
+   var promise =  DataService.getElementWeight();
+   promise.then(function(response) {
+   tipCtrl.data.weight = parseFloat(response.slice(2,8));
+   console.log(tipCtrl.data);
+   })
   }
-
   
 
   $scope.$on('item_created', function(event, obj) {
