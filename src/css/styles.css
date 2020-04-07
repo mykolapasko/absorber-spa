@@ -142,7 +142,7 @@ input.ng-touched.ng-valid {
 }
 
 #package-item button {
-margin-left: 25px;
+  margin-left: 25px;
 }
 
 .agent-item {
@@ -182,4 +182,18 @@ margin-left: 25px;
 #agent {
   text-decoration: none;
   color: black;
+}
+
+.banch-item {
+  background-color: #999999;
+  margin: 5px;
+  border-radius: 20px;
+  border: 1px solid black;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  padding: 5px;
+  height: 125px;
+}
+
+.banch-item button {
+  margin-left: 25px;
 }

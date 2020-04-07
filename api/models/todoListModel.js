@@ -127,6 +127,16 @@ var ElementSchema = new Schema({
   stand: {
     type: String,
     default: null
+  },
+
+  tipWgt: {
+    type: Number,
+    default: null
+  },
+
+  expectedElementWgt: {
+    type: Number,
+    default: null
   }
 },
 
