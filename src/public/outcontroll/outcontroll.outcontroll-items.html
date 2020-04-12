@@ -2,7 +2,8 @@
   <div class="col-sm-2" ng-repeat="item in $ctrl.items">
     <div ng-class="{'out-item': !item.data.element_weight, 'out-item-yellow': item.data.element_weight}">
       <h2 class="text-center">{{item.stamp}}</h2>
-      <p class="text-center">Weight: {{item.data.element_weight}}</p>
+      <p class="text-center">ExpWgt: {{item.data.expectedElementWgt}}</p>
+      <p class="text-center">ActWgt: {{item.data.element_weight}}</p>
       <div class="container">
         <button type="button" 
                 class="btn btn-success btn-sm"

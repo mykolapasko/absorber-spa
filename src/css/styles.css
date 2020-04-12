@@ -98,7 +98,7 @@ input.ng-touched.ng-valid {
   border: 1px solid black;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   padding: 5px;
-  height: 125px;
+  height: 150px;
 }
 
 .out-item h2 {
@@ -118,7 +118,7 @@ input.ng-touched.ng-valid {
   border: 1px solid black;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   padding: 5px;
-  height: 125px;
+  height: 150px;
 }
 
 
@@ -196,4 +196,24 @@ input.ng-touched.ng-valid {
 
 .banch-item button {
   margin-left: 25px;
+}
+
+.text-input-button-card {
+  background-color: #999999;
+  margin: 5px;
+  border-radius: 20px;
+  border: 1px solid black;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  padding: 5px;
+  height: 170px;
+}
+
+.text-input-button-card input {
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+
+.text-input-button-card button {
+  margin-left: 10px;
 }

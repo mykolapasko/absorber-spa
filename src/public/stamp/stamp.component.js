@@ -3,7 +3,7 @@
 'use strict';
 
 angular.module('public')
-.component('stampItems', {
+.component('items', {
   templateUrl: 'public/stamp/stamp.stamp-items.html',
   controller: StampItemsComponentController,
   bindings: {
@@ -16,11 +16,19 @@ StampItemsComponentController.$inject = ['DataService', '$scope', '$rootScope'];
 function StampItemsComponentController (DataService, $scope, $rootScope) {
   var $ctrl = this;
 
-  $ctrl.putInfo = function(item, index) {
+  $ctrl.putData = function(item, index) {
     item.data = {};
     item.data.stamp = item.stamp;
-    var promise = DataService.putInfo(item)
-    .then($ctrl.remove(index));
+    DataService.getCertainTip(item.stamp)
+    .then(function(response) {
+      item.data.tipWgt = response[0].weight;
+    })
+    .then(function(){
+      DataService.putInfo(item);
+    })
+    .then(function(){
+      $ctrl.remove(index);
+    });
   }
 
   $ctrl.remove = function (index) {

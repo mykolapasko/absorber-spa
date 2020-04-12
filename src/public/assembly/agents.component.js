@@ -24,10 +24,11 @@ function AgentsComponentController($scope, $state, $stateParams, DataService){
     $ctrl.data.agentData.id = agent._id;
     $ctrl.data.elementData.agentWgt = agent.weight;
     $ctrl.data.elementData.status = ['assembled'];
-    DataService.putElementInfo($ctrl.data.elementData)
-    .then(function(response) {
-      $ctrl.data.agentData.weight = null;
-      $ctrl.data.agentData.isEmpty = true;
+    if (agent.weight) {
+      DataService.putElementInfo($ctrl.data.elementData)
+      .then(function(response) {
+        $ctrl.data.agentData.weight = null;
+        $ctrl.data.agentData.isEmpty = true;
       DataService.putAgentInfo($ctrl.data.agentData)
       .then(function(response) {
         console.log($ctrl);
@@ -35,9 +36,8 @@ function AgentsComponentController($scope, $state, $stateParams, DataService){
         $state.go('public.assembly.claddings', {"elementData": {"banch": $stateParams.elementData.banch}, "agentData": {"deck": $stateParams.agentData.deck}});
       });
     });
+    }
   }
-
-
 };
 
 })();

@@ -70,16 +70,20 @@ function DataService($http, $rootScope) {
 // InControll end
 
 //Stamp start
-  service.getAvaliableTips = function () {
+
+  service.getItemsToStamp = function (banch) {
     var response = $http({
       method: "GET",
-      url: ("http://localhost:3000/tips")
+      url: ("http://localhost:3000/tasks")
     });
     return response
       .then(function(response) {
         return response.data.filter(function(item) {
-          return item.assembled === false;
+          return item.banch === banch && !item.stamp;
         })
+      })
+      .then(function(response) {
+        return response.sort(function(a,b) {return a.stamp_avg - b.stamp_avg});
       })
   }
 //Stamp end
@@ -121,24 +125,24 @@ function DataService($http, $rootScope) {
   }
 
 
-  // service.getElementWeight = function (itemId) {
-  //   return $http({
-  //     method: "GET",
-  //     url: ("http://localhost:3000/tasks/" + itemId)
-  //   }).then(function (response) {
-  //     return response.data;
-  //   });
-  // }
-
-
-  service.getElementWeight = function () {
+  service.getElementWeight = function (itemId) {
     return $http({
       method: "GET",
-      url: ("http://localhost:3000/weight")
-    }).then(function (weight) {
-      return weight.data;
+      url: ("http://localhost:3000/tasks/" + itemId)
+    }).then(function (response) {
+      return response.data;
     });
   }
+
+
+  // service.getElementWeight = function () {
+  //   return $http({
+  //     method: "GET",
+  //     url: ("http://localhost:3000/weight")
+  //   }).then(function (weight) {
+  //     return weight.data;
+  //   });
+  // }
 
   // Weight end
 
@@ -394,31 +398,42 @@ service.getDeckAgents = function (deck) {
     });
   }
 
-service.putAgentInfo = function (data) {
-    var putData = data;
-    return $http({
-      method: "PUT",
-      url: ("http://localhost:3000/agents/" + putData.id),
-      data: putData,
-      headers: {'Content-Type': 'application/json'}
-    }).then( function(response) {
-      console.log("success!", response);
-      return response;
-    }, function(response) {
-      console.log("failed!");
-    });
-  }
+  service.putAgentInfo = function (data) {
+      var putData = data;
+      return $http({
+        method: "PUT",
+        url: ("http://localhost:3000/agents/" + putData.id),
+        data: putData,
+        headers: {'Content-Type': 'application/json'}
+      }).then( function(response) {
+        console.log("success!", response);
+        return response;
+      }, function(response) {
+        console.log("failed!");
+      });
+    }
 // Assembly finsh
 
 // Tip start
-service.getTips = function () {
+  service.getTips = function () {
     return $http({
       method: "GET",
       url:("http://localhost:3000/tips")
     }).then(function(response) {
-      console.log(response);
       return response.data.sort(function(a,b) {
         return b.id - a.id;
+      });
+    });
+  }
+
+  service.getCertainTip = function (id) {
+    return $http({
+      method: "GET",
+      url:("http://localhost:3000/tips")
+    }).then(function(response) {
+      console.log(id);
+      return response.data.filter(function(item) {
+        return item.id === id;
       });
     });
   }

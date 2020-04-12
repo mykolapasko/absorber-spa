@@ -15,7 +15,7 @@
 					ng-min="1"
 					ng-max="99"
 					required>
-					<input placeholder="Pipe"
+<!-- 					<input placeholder="Pipe"
 					id="focusPipe" 
 					class="form-control"
 					ng-model="stCtrl.pipe"
@@ -23,12 +23,12 @@
 					ng-min="1"
 					ng-pattern="/^[0-9][^\.]*$/"
 					ng-maxlength=3
-					required>
+					required> -->
 				</div>
 				<button 
 					class="btn btn-warning"
-					ng-disabled = "!stCtrl.pipe"
-			        ng-click="stCtrl.getItemsToStamp(stCtrl.banch, stCtrl.pipe);">
+					ng-disabled = "!stCtrl.banch"
+			        ng-click="stCtrl.getItemsToStamp(stCtrl.banch);">
 			        Search
 	      		</button>
 			</form>
@@ -43,9 +43,9 @@
 	</div>
 </div>
 <div class="container">
-	<div class="row">
-		<div class="col-sm-6 col-sm-offset-3">
-			Banch items here!
+	<div class="row-content">
+		<div class="col-sm-12">
+			<items items="stCtrl.items"></items>
 		</div>
 	</div>
 </div>

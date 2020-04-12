@@ -33,9 +33,9 @@ function OutControllItemsComponentController ($scope, DataService) {
   $ctrl.getElementWeight = function(item, index) {
     var promise = DataService.getElementWeight(item._id);
     promise.then(function(response) {
-      console.log(response);
       item.data = {};
       item.data.element_weight = parseFloat(response.absorber_weight + 1700);
+      item.data.expectedElementWgt = parseFloat(item.pipe_weight + item.tipWgt + item.agentWgt + item.absorber_weight).toPrecision(5);
     });
   }
 

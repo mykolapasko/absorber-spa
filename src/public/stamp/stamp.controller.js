@@ -4,13 +4,11 @@
 angular.module('public')
 .controller('StampController', StampController);
 
-StampController.$inject = ['DataService', '$rootScope', '$scope', 'tips'];
-function StampController(DataService, $rootScope, $scope, tips) {
+StampController.$inject = ['DataService', '$rootScope', '$scope'];
+function StampController(DataService, $rootScope, $scope) {
   var stCtrl = this;
 
-  stCtrl.tips = tips;
   stCtrl.$onInit = function() {
-    console.log(tips);
   }
 
   // stCtrl.added_items = [];
@@ -32,6 +30,13 @@ function StampController(DataService, $rootScope, $scope, tips) {
   //     stCtrl.pipe = '';
   //   });
   // }
+
+  stCtrl.getItemsToStamp = function(banch) {
+    var promise = DataService.getItemsToStamp(banch);
+    promise.then(function(response) {
+      stCtrl.items = response;
+    });
+  }
 
 }
 
