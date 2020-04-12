@@ -29,11 +29,6 @@ var TipSchema = new Schema({
   weight: {
     type: Number,
     default: null
-  },
-
-  assembled: {
-    type: Boolean,
-    default: false
   }
 },
 
