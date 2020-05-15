@@ -7,13 +7,13 @@ angular.module('public')
 
 .directive('nozzleExist', NozzleExist);
 
-NozzleExist.$inject = ['$http', '$q'];
-function NozzleExist($http, $q) {
+NozzleExist.$inject = ['$http', '$q', 'ApiPath'];
+function NozzleExist($http, $q, ApiPath) {
   var ddo = {
     require: 'ngModel',
     link: function(scope, element, attrs, ngModel) {
       ngModel.$asyncValidators.NozzleExist = function(modelValue, viewValue) {
-        return $http.get('http://192.168.0.1:3000/tasks')
+        return $http.get(ApiPath + '/tasks')
         .then(function(response) {
           return !response.data.some(function(currentValue) {
             return currentValue.nozzle === parseInt(modelValue);

@@ -10,7 +10,7 @@ var express = require('express'),
   SerialPort = require('serialport');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://127.0.0.1/dbelements');
+mongoose.connect('mongodb://127.0.0.1/dbelements', {useMongoClient: true});
 
 
 app.use(bodyParser.urlencoded({ extended: true }));

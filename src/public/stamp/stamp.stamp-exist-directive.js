@@ -7,13 +7,13 @@ angular.module('public')
 
 .directive('stampExist', StampExist);
 
-StampExist.$inject = ['$http', '$q'];
-function StampExist($http, $q) {
+StampExist.$inject = ['$http', '$q', 'ApiPath'];
+function StampExist($http, $q, ApiPath) {
   var ddo = {
     require: 'ngModel',
     link: function(scope, element, attrs, ngModel) {
       ngModel.$asyncValidators.StampExist = function(modelValue, viewValue) {
-        return $http.get('http://192.168.0.1:3000/tasks')
+        return $http.get(ApiPath + '/tasks')
         .then(function(response) {
           return !response.data.some(function(currentValue) {
             return currentValue.stamp === parseInt(modelValue);

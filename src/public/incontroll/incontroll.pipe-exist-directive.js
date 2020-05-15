@@ -7,13 +7,13 @@ angular.module('public')
 
 .directive('pipeExist', PipeExist);
 
-PipeExist.$inject =['$http', '$q'];
-function PipeExist($http, $q) {
+PipeExist.$inject =['$http', '$q', 'ApiPath'];
+function PipeExist($http, $q, ApiPath) {
   var ddo = {
     require: 'ngModel',
     link: function(scope, element, attrs, ngModel) {
       ngModel.$asyncValidators.PipeExist = function(modelValue, viewValue) {
-        return $http.get('http://192.168.0.1:3000/tasks')
+        return $http.get(ApiPath + '/tasks')
         .then(function(response) {
           return response.data.filter(function(item) {
             return item.serial === parseInt(scope.inCtrl.serial);
