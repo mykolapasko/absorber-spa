@@ -19,7 +19,10 @@
 
   </head>
 
-  <body ng-app="absorber">
+  <body ng-app="absorber" ng-strict-di>
+
+    <loading class="loading-indicator"></loading>
+    
     <nav class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <div class="navbar-header">
@@ -89,6 +92,8 @@
     <script src="common/common.module.js"></script>
     <script src="common/data.service.js"></script>
     <script src="common/common.auto-focus-directive.js"></script>
+    <script src="common/loading/loading.component.js"></script>
+    <script src="common/loading/loading.interceptor.js"></script>
     <script src="public/incontroll/incontroll.controller.js"></script>
     <script src="public/incontroll/incontroll.component.js"></script>
     <script src="public/incontroll/incontroll.pipe-exist-directive.js"></script>
