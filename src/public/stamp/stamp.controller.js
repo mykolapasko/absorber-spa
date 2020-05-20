@@ -9,6 +9,7 @@ function StampController(DataService, $rootScope, $scope) {
   var stCtrl = this;
 
   stCtrl.$onInit = function() {
+    console.log('Stamp controller');
   }
 
   // stCtrl.added_items = [];

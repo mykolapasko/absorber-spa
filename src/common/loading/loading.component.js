@@ -14,7 +14,6 @@ function LoadingController ($rootScope) {
   var listener;
 
   $ctrl.$onInit = function() {
-    console.log("I am here!");
     $ctrl.show = false;
     listener = $rootScope.$on('spinner:activate', onSpinnerActivate);
   };

@@ -3,7 +3,7 @@
 'use strict';
 
 angular.module('public')
-.component('items', {
+.component('stampItems', {
   templateUrl: 'public/stamp/stamp.stamp-items.html',
   controller: StampItemsComponentController,
   bindings: {

@@ -131,7 +131,7 @@ input.ng-touched.ng-valid {
   padding-bottom: 50px;
 }
 
-#package-item {
+.package-item {
   background-color: #999999;
   margin: 5px;
   border-radius: 20px;
@@ -163,6 +163,16 @@ input.ng-touched.ng-valid {
   margin-top: 10px;
   margin-left: 5px;
   margin-right: 5px;
+}
+
+.stamp-item {
+  background-color: #999999;
+  margin: 5px;
+  border-radius: 20px;
+  border: 1px solid black;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  padding-top: 12px;
+  height: 110px;
 }
 
 .blue-deck {
