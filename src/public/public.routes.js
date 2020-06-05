@@ -37,7 +37,28 @@ function routeConfig ($stateProvider) {
     .state('public.stamp', {
       url: '/stamp',
       templateUrl: 'public/stamp/stamp.html',
-      controller: 'StampController as stCtrl'
+      controller: 'StampController as stCtrl',
+      params: {
+        banch: null,
+        itemId: null
+      }
+    }).state('public.stamp.items', {
+      templateUrl: 'public/stamp/items.html',
+      controller: 'StampItemsController as itCtrl',
+      resolve: {
+        items: ['DataService', '$stateParams', function(DataService, $stateParams) {
+          return DataService.getItemsToStamp($stateParams.banch);
+        }]
+      }
+    })
+    .state('public.stamp.item.details', {
+      templateUrl: 'public/stamp.item.details.html',
+      controller: 'StampItemDetailsController as detCtrl',
+      resolve: {
+        item: ['DataService', '$stateParams', function(DataService, $stateParams) {
+          return DataService.getItem($stateParams.itemId);
+        }]
+      }
     })
     .state('public.weight', {
       url: '/weight',

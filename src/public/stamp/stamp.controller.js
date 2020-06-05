@@ -4,12 +4,12 @@
 angular.module('public')
 .controller('StampController', StampController);
 
-StampController.$inject = ['DataService', '$rootScope', '$scope'];
-function StampController(DataService, $rootScope, $scope) {
+StampController.$inject = ['DataService', '$rootScope', '$scope', '$state', '$stateParams'];
+function StampController(DataService, $rootScope, $scope, $state, $stateParams) {
   var stCtrl = this;
 
   stCtrl.$onInit = function() {
-    console.log('Stamp controller');
+    stCtrl.banch = '';
   }
 
   // stCtrl.added_items = [];
@@ -32,11 +32,8 @@ function StampController(DataService, $rootScope, $scope) {
   //   });
   // }
 
-  stCtrl.getItemsToStamp = function(banch) {
-    var promise = DataService.getItemsToStamp(banch);
-    promise.then(function(response) {
-      stCtrl.items = response;
-    });
+  stCtrl.goToStampItems = function() {
+   $state.go('public.stamp.items', {'banch': stCtrl.banch});
   }
 
 }

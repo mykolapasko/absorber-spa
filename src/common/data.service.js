@@ -9,10 +9,19 @@ DataService.$inject = ['$http', '$rootScope', 'ApiPath'];
 function DataService($http, $rootScope, ApiPath) {
   var service = this;
 
+  service.getItem = function (itemId) {
+    var response = $http({
+      method: "GET",
+      url: (ApiPath + "/tasks/:" + itemId)
+    });
+    console.log(response.data);
+    return response.data;
+  }
+
   service.getItemsToReport = function () {
     var response = $http({
       method: "GET",
-      url:(ApiPath + "/tasks")
+      url: (ApiPath + "/tasks")
     });
     return response.then(function(response) {
       return response.data
@@ -72,6 +81,7 @@ function DataService($http, $rootScope, ApiPath) {
 //Stamp start
 
   service.getItemsToStamp = function (banch) {
+    console.log("Stamp service call");
     var response = $http({
       method: "GET",
       url: (ApiPath + "/tasks")

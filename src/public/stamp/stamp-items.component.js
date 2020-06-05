@@ -12,9 +12,14 @@ angular.module('public')
 });
 
 //Component controller start
-StampItemsComponentController.$inject = ['DataService', '$scope', '$rootScope'];
-function StampItemsComponentController (DataService, $scope, $rootScope) {
+StampItemsComponentController.$inject = ['DataService', '$scope', '$rootScope', '$state', '$stateParams'];
+function StampItemsComponentController (DataService, $scope, $rootScope, $state, $stateParams) {
   var $ctrl = this;
+
+  $ctrl.goToItemDetails = function() {
+    console.log(item._id);
+    DataService.getItem(item._id);
+  }
 
   $ctrl.putData = function(item, index) {
     item.data = {};
