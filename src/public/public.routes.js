@@ -51,13 +51,17 @@ function routeConfig ($stateProvider) {
         }]
       }
     })
-    .state('public.stamp.item.details', {
-      templateUrl: 'public/stamp.item.details.html',
-      controller: 'StampItemDetailsController as detCtrl',
-      resolve: {
-        item: ['DataService', '$stateParams', function(DataService, $stateParams) {
-          return DataService.getItem($stateParams.itemId);
-        }]
+    .state('public.stamp.items.details', {
+      views: {
+        "@": {
+          templateUrl: 'public/stamp/stamp.item.details.html',
+          controller: 'StampItemDetailsController as detCtrl',
+          resolve: {
+            item: ['DataService', '$stateParams', function(DataService, $stateParams) {
+              return DataService.getItem($stateParams.itemId);
+            }]
+          }
+        }
       }
     })
     .state('public.weight', {

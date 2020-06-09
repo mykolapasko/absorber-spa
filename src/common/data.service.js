@@ -12,10 +12,13 @@ function DataService($http, $rootScope, ApiPath) {
   service.getItem = function (itemId) {
     var response = $http({
       method: "GET",
-      url: (ApiPath + "/tasks/:" + itemId)
+      url: (ApiPath + "/tasks/" + itemId)
     });
-    console.log(response.data);
-    return response.data;
+    return response
+    .then(function (response) {
+      console.log(response.data);
+      return response.data;
+    });
   }
 
   service.getItemsToReport = function () {

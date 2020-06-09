@@ -11,6 +11,8 @@ function StampItemDetailsController(DataService, $scope, $stateParams, $state, i
 
   detCtrl.$onInit = function() {
   	console.log("StampItemDetailsController call!");
+  	console.log("item: ", item);
+  	detCtrl.item = item;
   };
 
 }
