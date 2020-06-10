@@ -79,7 +79,7 @@ var ElementSchema = new Schema({
   status: {
     type: [{
       type: String,
-      enum: ['pending', 'ongoing', 'completed', 'checked', 'defect', 'reserve', 'assembled']
+      enum: ['pending', 'ongoing', 'completed', 'checked', 'defect', 'reserve', 'assembled', 'experiment']
     }],
     default: ['pending']
   },
