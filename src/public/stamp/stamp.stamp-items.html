@@ -2,36 +2,6 @@
   <div class="col-sm-2" ng-repeat="item in $ctrl.items">
     <div class="stamp-item" ng-click="$ctrl.goToItemDetails(item)">
       <h2 class="text-center">{{item.pipe}} / {{item.stamp_avg}}</h2>
-<!--       <div class="container">
-        <form name="itemForm" 
-          novalidate>
-          <div class="row">
-            <div class="col-sm-1">
-              <input placeholder=""
-                  ng-pattern="/^[0-9][^\.]*$/"
-                  name="stamp" 
-                  type="number" 
-                  class="form-control"
-                  ng-model="item.stamp"
-                  ng-min=1
-                  ng-minlength=1
-                  ng-maxlength=4
-                  required
-                  stamp-exist>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-1">
-              <button class="btn btn-success"
-                type="button"
-                ng-if="!(itemForm.$invalid || itemForm.$pending)"
-                ng-click="$ctrl.putData(item, $index);">
-                Send
-              </button>
-            </div>
-          </div>
-        </form>
-      </div> -->
     </div>
   </div>
 </div>

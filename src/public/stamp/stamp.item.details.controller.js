@@ -10,10 +10,22 @@ function StampItemDetailsController(DataService, $scope, $stateParams, $state, i
   var detCtrl = this;
 
   detCtrl.$onInit = function() {
-  	console.log("StampItemDetailsController call!");
-  	console.log("item: ", item);
   	detCtrl.item = item;
+  	detCtrl.item.data = {};
   };
+
+  // detCtrl.goToStampItems = function() {
+  //  $state.go('public.stamp.items', {'banch': $stateParams.banch});
+  // }
+
+  detCtrl.putItemStampAndGoToStampItems = function(item) {
+  	detCtrl.item.data.id = detCtrl.item._id;
+  	detCtrl.item.data.stamp = item.stamp;
+  	DataService.putInfo(detCtrl.item.data)
+  	.then(function(response) {
+  		$state.go('public.stamp.items', {'banch': $stateParams.banch});
+  	});
+  }
 
 }
 
