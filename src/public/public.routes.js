@@ -51,11 +51,11 @@ function routeConfig ($stateProvider) {
         }]
       }
     })
-    .state('public.stamp.items.details', {
+    .state('public.stamp.details', {
       views: {
-        "@": {
-          templateUrl: 'public/stamp/stamp.item.details.html',
-          controller: 'StampItemDetailsController as detCtrl',
+        "@" : {
+          templateUrl: 'public/stamp/item-details.html',
+          controller: 'DetailsController as detCtrl',
           resolve: {
             item: ['DataService', '$stateParams', function(DataService, $stateParams) {
               return DataService.getItem($stateParams.itemId);

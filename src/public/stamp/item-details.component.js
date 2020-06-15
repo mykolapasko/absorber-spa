@@ -3,26 +3,37 @@
 'use strict';
 
 angular.module('public')
-.component('stampItems', {
-  templateUrl: 'public/stamp/stamp.stamp-items.html',
-  controller: StampItemsComponentController,
+.component('itemDetails', {
+  templateUrl: 'public/stamp/stamp.item.details.html',
+  controller: ItemDetailsComponentController,
   bindings: {
-    items: '<'
+    item: '<'
   }
 });
 
 //Component controller start
-StampItemsComponentController.$inject = ['DataService', '$scope', '$rootScope', '$state', '$stateParams'];
-function StampItemsComponentController (DataService, $scope, $rootScope, $state, $stateParams) {
+ItemDetailsComponentController.$inject = ['DataService', '$state', '$stateParams'];
+function ItemDetailsComponentController (DataService, $state, $stateParams) {
   var $ctrl = this;
 
   $ctrl.$onInit = function() {
-    console.log("StampItemsComponentController call!");
+    $ctrl.stamp = '';
+    $ctrl.item.data = {};
+    console.log($ctrl);
   }
 
-  $ctrl.goToItemDetails = function(item) {
-   $state.go('public.stamp.details', {'itemId': item._id});
+  $ctrl.goToItems = function() {
+   $state.go('public.stamp.items', {'banch': $stateParams.banch});
   }
+
+  $ctrl.putData = function() {
+    $ctrl.item.data.stamp = $ctrl.stamp;
+    DataService.putInfo($ctrl.item)
+    .then($ctrl.goToItems());
+  }
+
+
+
 
   // $ctrl.putData = function(item, index) {
   //   item.data = {};
