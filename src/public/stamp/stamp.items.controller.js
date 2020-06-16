@@ -10,7 +10,6 @@ function StampItemsController(DataService, $scope, $stateParams, $state, items) 
   var itCtrl = this;
 
   itCtrl.$onInit = function() {
-  	console.log("StampItemsController call!");
     itCtrl.items = items;
   };
 

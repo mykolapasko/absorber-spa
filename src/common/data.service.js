@@ -16,7 +16,6 @@ function DataService($http, $rootScope, ApiPath) {
     });
     return response
     .then(function (response) {
-      console.log(response.data);
       return response.data;
     });
   }

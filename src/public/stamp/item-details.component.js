@@ -19,7 +19,6 @@ function ItemDetailsComponentController (DataService, $state, $stateParams) {
   $ctrl.$onInit = function() {
     $ctrl.stamp = '';
     $ctrl.item.data = {};
-    console.log($ctrl);
   }
 
   $ctrl.goToItems = function() {
@@ -32,27 +31,6 @@ function ItemDetailsComponentController (DataService, $state, $stateParams) {
     .then($ctrl.goToItems());
   }
 
-
-
-
-  // $ctrl.putData = function(item, index) {
-  //   item.data = {};
-  //   item.data.stamp = item.stamp;
-  //   DataService.getCertainTip(item.stamp)
-  //   .then(function(response) {
-  //     item.data.tipWgt = response[0].weight;
-  //   })
-  //   .then(function(){
-  //     DataService.putInfo(item);
-  //   })
-  //   .then(function(){
-  //     $ctrl.remove(index);
-  //   });
-  // }
-
-  // $ctrl.remove = function (index) {
-  //   $ctrl.items.splice(index, 1);
-  // }
 }
 
 
