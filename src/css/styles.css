@@ -173,6 +173,7 @@ input.ng-touched.ng-valid {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   padding-top: 12px;
   height: 110px;
+  cursor: pointer;
 }
 
 .blue-deck {

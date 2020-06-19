@@ -1,4 +1,7 @@
 <div class="row">
+	<div class="row">
+	<h1>Stamp module</h1>
+	<h2>Current Banch: {{$ctrl.currentBanch}}</h2>
   <div class="col-sm-2" ng-repeat="item in $ctrl.items">
     <div class="stamp-item" ng-click="$ctrl.goToItemDetails(item)">
       <h2 class="text-center">{{item.pipe}} / {{item.stamp_avg}}</h2>

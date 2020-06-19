@@ -32,7 +32,37 @@ function routeConfig ($stateProvider) {
     .state('public.nozzle', {
       url: '/nozzle',
       templateUrl: 'public/nozzle/nozzle.html',
-      controller: 'NozzleController as nzCtrl'
+      controller: 'NozzleController as nzCtrl',
+      params: {
+        banch: null,
+        itemId: null
+      }
+    })
+    .state('public.nozzle.items', {
+      views: {
+          "@": {
+            templateUrl: 'public/nozzle/items.html',
+            controller: 'NozzleItemsController as itCtrl',
+            resolve: {
+            items: ['DataService', '$stateParams', function(DataService, $stateParams) {
+              return DataService.getItemsToNozzle($stateParams.banch);
+            }]
+          }
+        }
+      }
+    })
+    .state('public.nozzle.details', {
+      views: {
+        "@" : {
+          templateUrl: 'public/nozzle/item-details.html',
+          controller: 'DetailsController as nzdetCtrl',
+          resolve: {
+            item: ['DataService', '$stateParams', function(DataService, $stateParams) {
+              return DataService.getItem($stateParams.itemId);
+            }]
+          }
+        }
+      }
     })
     .state('public.stamp', {
       url: '/stamp',
@@ -42,13 +72,18 @@ function routeConfig ($stateProvider) {
         banch: null,
         itemId: null
       }
-    }).state('public.stamp.items', {
-      templateUrl: 'public/stamp/items.html',
-      controller: 'StampItemsController as itCtrl',
-      resolve: {
-        items: ['DataService', '$stateParams', function(DataService, $stateParams) {
-          return DataService.getItemsToStamp($stateParams.banch);
-        }]
+    })
+    .state('public.stamp.items', {
+      views: {
+        "@" : {
+          templateUrl: 'public/stamp/items.html',
+          controller: 'StampItemsController as itCtrl',
+          resolve: {
+            items: ['DataService', '$stateParams', function(DataService, $stateParams) {
+              return DataService.getItemsToStamp($stateParams.banch);
+            }]
+          }
+        }
       }
     })
     .state('public.stamp.details', {

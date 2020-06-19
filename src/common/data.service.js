@@ -103,17 +103,21 @@ function DataService($http, $rootScope, ApiPath) {
 
 // Nozzle start
 
-  service.getItemsToNozzle = function (banch, pipe) {
+  service.getItemsToNozzle = function (banch) {
+    console.log("Nozzle service call");
     var response = $http({
       method: "GET",
-      url:(ApiPath + "/tasks")
+      url: (ApiPath + "/tasks")
     });
     return response
       .then(function(response) {
         return response.data.filter(function(item) {
-          return item.banch === banch && item.pipe === pipe;
-        });
-    });
+          return item.banch === banch && !item.nozzle;
+        })
+      })
+      .then(function(response) {
+        return response.sort(function(a,b) {return a.nozzle_avg - b.nozzle_avg});
+      })
   }
 
 // Nozzle end

@@ -1,0 +1,38 @@
+<div class="jumbotron"
+  id="section-jumb">
+   <p class="text-center">Nozzle details section</p>
+</div>
+<div class="container">
+  <div class="row-content">
+    <div class="col-sm-5">
+      <form class="navbar-form navbar-left" name="itemForm" novalidate>
+        <div class="form-group">
+          <input placeholder="nozzle"
+                    ng-pattern="/^[0-9][^\.]*$/"
+                    name="nozzle" 
+                    type="number" 
+                    class="form-control"
+                    ng-model="$ctrl.nozzle"
+                    ng-min=1
+                    ng-minlength=1
+                    ng-maxlength=4
+                    required
+                    nozzle-exist>
+        </div>
+        <button class="btn btn-success"
+                type="button"
+                ng-if="!(itemForm.$invalid || itemForm.$pending)"
+                ng-click="$ctrl.putData();">
+                Send
+              </button>
+      </form>
+    </div>
+    <div class="col-sm-7">
+      <div class="row-content">
+        <div class="col-sm-12">
+          <h3 class="text-center">banch: {{$ctrl.item.banch}}, pipe: {{$ctrl.item.pipe}}, diameter avg: {{$ctrl.item.nozzle_avg}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

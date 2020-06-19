@@ -16,8 +16,7 @@ StampItemsComponentController.$inject = ['DataService', '$scope', '$rootScope', 
 function StampItemsComponentController (DataService, $scope, $rootScope, $state, $stateParams) {
   var $ctrl = this;
 
-  $ctrl.$onInit = function() {
-  }
+  $ctrl.currentBanch = $stateParams.banch;
 
   $ctrl.goToItemDetails = function(item) {
    $state.go('public.stamp.details', {'itemId': item._id});
