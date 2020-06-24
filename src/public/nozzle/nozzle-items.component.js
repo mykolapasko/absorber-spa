@@ -16,10 +16,6 @@ NozzleItemsComponentController.$inject = ['DataService', '$scope', '$rootScope',
 function NozzleItemsComponentController (DataService, $scope, $rootScope, $state, $stateParams) {
   var $ctrl = this;
 
-  $ctrl.$onInit = function() {
-    console.log("NozzleItemsComponentController call!", $stateParams.banch);
-  }
-
   $ctrl.currentBanch = $stateParams.banch;
 
   $ctrl.goToItemDetails = function(item) {

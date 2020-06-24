@@ -41,6 +41,7 @@ function DataService($http, $rootScope, ApiPath) {
     }).then( function(response) {
       //Broadcasting event 'item_updated', to clear and focus pipe field
       $rootScope.$broadcast('item_updated');
+      return response;
       console.log("success!", response.data);
     }, function(response) {
       console.log("failed!");
@@ -83,7 +84,6 @@ function DataService($http, $rootScope, ApiPath) {
 //Stamp start
 
   service.getItemsToStamp = function (banch) {
-    console.log("Stamp service call");
     var response = $http({
       method: "GET",
       url: (ApiPath + "/tasks")
@@ -104,7 +104,6 @@ function DataService($http, $rootScope, ApiPath) {
 // Nozzle start
 
   service.getItemsToNozzle = function (banch) {
-    console.log("Nozzle service call");
     var response = $http({
       method: "GET",
       url: (ApiPath + "/tasks")

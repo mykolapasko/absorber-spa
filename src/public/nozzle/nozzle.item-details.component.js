@@ -21,14 +21,14 @@ function NozzleItemDetailsComponentController (DataService, $state, $stateParams
     $ctrl.item.data = {};
   }
 
-  $ctrl.goToItems = function() {
-   $state.go('public.nozzle.items', {'banch': $stateParams.banch});
-  }
-
   $ctrl.putData = function() {
     $ctrl.item.data.nozzle = $ctrl.nozzle;
-    DataService.putInfo($ctrl.item)
-    .then($ctrl.goToItems());
+    var promise = DataService.putInfo($ctrl.item);
+    promise.then(function(response) {
+      if (response.data.nozzle) {
+        $state.go('public.nozzle.items', {'banch': $stateParams.banch})
+      }
+    })
   }
 
 }
