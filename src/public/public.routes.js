@@ -129,8 +129,15 @@ function routeConfig ($stateProvider) {
       templateUrl: 'public/pdf/pdf.html',
       controller: 'PDFController as pdfCtrl'
     })
+    .state('public.checking', {
+      views: {
+        "@" : {
+                templateUrl: 'public/check/authorization.html',
+                controller: 'CheckController as checkCtrl'
+        }
+      }
+    })
     .state('public.edit', {
-      url: '/edit',
       templateUrl: 'public/edit/edit.html',
       controller: 'EditController as edCtrl'
     })

@@ -21,10 +21,6 @@ function ItemDetailsComponentController (DataService, $state, $stateParams) {
     $ctrl.item.data = {};
   }
 
-  // $ctrl.goToItems = function() {
-  //  $state.go('public.stamp.items', {'banch': $stateParams.banch});
-  // }
-
   $ctrl.putData = function() {
     $ctrl.item.data.stamp = $ctrl.stamp;
     var promise = DataService.putInfo($ctrl.item);

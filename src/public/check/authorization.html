@@ -1,0 +1,32 @@
+<div class="jumbotron"
+	id="section-jumb">
+   <p class="text-center">Authorization</p>
+</div>
+<div class="container">
+	<div class="row-content">
+		<div class="col-sm-12">
+			<form class="navbar-form navbar-center" novalidate>
+				<div class="form-group">
+					<input placeholder="Password" 
+					class="form-control"
+					ng-model="checkCtrl.password"
+					type="string"
+					required>
+				</div>
+				<button 
+					class="btn btn-danger"
+			        ng-click="checkCtrl.goToEdit();">
+			        Get permission
+	      		</button>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row-content">
+		<div class="col-sm-12">
+			<h3>{{checkCtrl.alert}}</h3>
+			<div ui-view ></div>
+		</div>
+	</div>
+</div>
