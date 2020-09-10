@@ -60,7 +60,7 @@
 					  required>
 					</div>
 					<button  class="btn btn-success"
-							ng-disabled="dimensionForm.$invalid || dimensionForm.$pending" 
+							ng-disabled="dimensionForm.$invalid || dimensionForm.$pending || !inCtrl.banch" 
 							ng-click="inCtrl.postInfo();">Create</button>
 				</form>
 			</div>
