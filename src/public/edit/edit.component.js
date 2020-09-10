@@ -47,7 +47,7 @@ function EditItemsComponentController (DataService, $scope) {
     item.data.nozzle_avg = Math.round(((parseFloat(item.data.diameter_three) + parseFloat(item.data.diameter_four))/2).toPrecision(4)*100)/100;
     item.data.stamp_avg = Math.round(((parseFloat(item.data.diameter_one) + parseFloat(item.data.diameter_two))/2).toPrecision(4)*100)/100;
     item.data.pipe = item.pipe;
-    console.log(item.data);
+    item.data.status = item.status;
     var promise = DataService.putInfo(item)
     .then($ctrl.remove(index));
   }
