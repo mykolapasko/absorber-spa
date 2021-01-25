@@ -1,4 +1,5 @@
 <form class="navbar-form navbar-left" novalidate>
+	<h4>Container report</h4>
 	<div class="form-group">
 		<input placeholder="Container" 
 		class="form-control"
@@ -12,6 +13,7 @@
 			ng-click="pdfCtrl.getItemsToPdf(pdfCtrl.searchTerm);">PDF</button>
 </form>
 <form class="navbar-form navbar-left" novalidate>
+	<h4>Banch report</h4>
 	<div class="form-group">
 		<input placeholder="Banch" 
 		class="form-control"
@@ -23,4 +25,18 @@
 	</div>
 	<button  class="btn btn-success"
 			ng-click="pdfCtrl.getBanchItemsToPdf(pdfCtrl.banch);">PDF</button>
+</form>
+<form class="navbar-form navbar-left" novalidate>
+	<h4>Stickers for Anthony</h4>
+	<div class="form-group">
+		<input placeholder="Banch" 
+		class="form-control"
+		ng-model="pdfCtrl.stickerBanch"
+		type="number"
+		ng-pattern="/^[0-9][^\.]*$/"
+		ng-min="1"
+		required>
+	</div>
+	<button  class="btn btn-success"
+			ng-click="pdfCtrl.createStickersPdf(pdfCtrl.stickerBanch);">PDF</button>
 </form>

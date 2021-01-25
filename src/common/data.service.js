@@ -95,7 +95,7 @@ function DataService($http, $rootScope, ApiPath) {
         })
       })
       .then(function(response) {
-        return response.sort(function(a,b) {return a.stamp_avg - b.stamp_avg});
+        return response.sort(function(a,b) {return a.pipe - b.pipe});
       })
   }
 //Stamp end
@@ -115,7 +115,7 @@ function DataService($http, $rootScope, ApiPath) {
         })
       })
       .then(function(response) {
-        return response.sort(function(a,b) {return a.nozzle_avg - b.nozzle_avg});
+        return response.sort(function(a,b) {return a.pipe - b.pipe});
       })
   }
 
@@ -226,7 +226,7 @@ service.getItemsToOutControll = function (searchTerm) {
       var container_data = {};
 
       if (!last) {
-        container_data.last = 602;
+        container_data.last = 678;
         container_data.length = 0;
         return container_data;
       } else if (length === 18) {

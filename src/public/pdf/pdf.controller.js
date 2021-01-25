@@ -10,6 +10,7 @@ function PDFController($scope, DataService) {
 
   pdfCtrl.searchTerm = '';
   pdfCtrl.banch = '';
+  pdfCtrl.stickerBanch = '';
 
   pdfCtrl.getItemsToPdf = function(searchTerm) {
     var promise = DataService.getItemsToPdf(searchTerm);
@@ -25,7 +26,7 @@ function PDFController($scope, DataService) {
 
     var doted_list = [];
     pdfCtrl.pdfContent.forEach(function(item) {
-    	doted_list.push(' ' + item.stamp.toString() + '.20');
+    	doted_list.push(' ' + item.stamp.toString() + '.21');
     });
 
     // var hand_made_list = [ "1.20", ' ' + 1224.19, ' ' + 1226.19, ' ' + 1227.19, ' ' + 1254.19, ' ' + 1258.19, ' ' + 1259.19, ' ' + 1302.19, ' ' + 1316.19,
@@ -54,14 +55,14 @@ function PDFController($scope, DataService) {
           },
           {
           	text: 'Партия №' + pdfCtrl.searchTerm + '\nДоговор № ' +
-          	'20/71/37-143-04-19-01391 от 31.07.2019г.\n\n'
+          	'25/35/37-143-04-20-01588 от 07.04.2020г.\n\n'
           },
           {
           	style: 'tableExample',
           	table: {
           		widths: [175, '*', 100, '*'],
           		body: [
-          			['Ответственный за упаковку и комплектацию','','\nВ.В. Ворожко','']
+          			['Ответственный за упаковку и комплектацию','','\nМ.А. Семенов','']
           		]
           	},
           	layout: 'noBorders'
@@ -171,7 +172,7 @@ function PDFController($scope, DataService) {
           },
          
 
-          table(externalDataRetrievedFromServer, ['pipe', 'stamp', 'nozzle', 'nozzle_avg', 'stamp_avg', ,'diameter_avg','serial'])
+          table(externalDataRetrievedFromServer, ['pipe', 'stamp', 'nozzle', 'nozzle_avg', 'stamp_avg','diameter_avg','serial'])
       ],
       styles: {
         header: {
@@ -187,6 +188,44 @@ function PDFController($scope, DataService) {
 
     pdfMake.createPdf(dd).download(pdfCtrl.banch);
   };
+
+  // Stickers section
+
+  // pdfCtrl.createStickersPdf = function(banch) {
+  //   var promise = DataService.getBanchItemsToPdf(banch);
+  //   promise.then(function (response){
+  //     pdfCtrl.pdfContent = response;
+  //     console.log("Stickers response: ", response);
+  //     pdfCtrl.downloadPdf();
+  //   });
+  // }
+
+  // pdfCtrl.downloadPdf = function() {
+    
+  //   var dd = {
+  //     content: [
+  //       {
+  //         text: 'Awesome stickers for banch ' + pdfCtrl.stickerBanch
+  //       },
+  //       {
+  //         table: {
+  //           body: [{
+  //             stack: [
+  //               {
+  //                 ul: [
+  //                   '16',
+  //                   '9999999'
+  //                 ]
+  //               }
+  //             ]
+  //           }]
+  //         }
+  //       }
+  //     ]
+  //   };
+
+  //   pdfMake.createPdf(dd).download(pdfCtrl.stickerBanch);
+  // }
 
 
 }
