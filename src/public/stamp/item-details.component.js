@@ -23,11 +23,15 @@ function ItemDetailsComponentController (DataService, $state, $stateParams) {
 
   $ctrl.putData = function() {
     $ctrl.item.data.stamp = $ctrl.stamp;
-    var promise = DataService.putInfo($ctrl.item);
-    promise.then(function(response) {
-      if (response.data.stamp) {
-        $state.go('public.stamp.items', {'banch': $stateParams.banch})
-      }
+    DataService.getCertainTip($ctrl.stamp)
+    .then(function(response) {
+      $ctrl.item.data.tipWgt = response[0].weight;
+      DataService.putInfo($ctrl.item)
+      .then(function(response){
+        if (response.data.stamp) {
+          $state.go('public.stamp.items', {'banch': $stateParams.banch})
+        }
+      })
     })
   }
 
