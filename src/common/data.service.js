@@ -295,6 +295,27 @@ service.getItemsToPackage = function(searchTerm) {
     });
   }
 
+  service.getBanchItemsForStickers = function(searchTerm) {
+    return $http({
+      method: "GET",
+      url: (ApiPath + "/tasks")
+    }).then(function(response) {
+      return response.data.filter(function(item) {
+        return item.banch === searchTerm;
+      });
+    }).then(function(response) {
+      return response.sort(function(a,b) {
+        return a.pipe - b.pipe;
+      });
+    }).then(function(response) {
+      var tableData = [];
+      response.forEach(function(item) {
+        tableData.push({stack: [item.pipe, 'B' + item.banch ]});
+      });
+      return tableData
+    })
+  }
+
 
 //PDF end
 

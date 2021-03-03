@@ -21,17 +21,27 @@ function ItemDetailsComponentController (DataService, $state, $stateParams) {
     $ctrl.item.data = {};
   }
 
-  $ctrl.putData = function() {
+  // $ctrl.putData = function() {
+  //   $ctrl.item.data.stamp = $ctrl.stamp;
+  //   DataService.getCertainTip($ctrl.stamp)
+  //   .then(function(response) {
+  //     $ctrl.item.data.tipWgt = response[0].weight;
+  //     DataService.putInfo($ctrl.item)
+  //     .then(function(response){
+  //       if (response.data.stamp) {
+  //         $state.go('public.stamp.items', {'banch': $stateParams.banch})
+  //       }
+  //     })
+  //   })
+  // }
+
+    $ctrl.putData = function() {
     $ctrl.item.data.stamp = $ctrl.stamp;
-    DataService.getCertainTip($ctrl.stamp)
-    .then(function(response) {
-      $ctrl.item.data.tipWgt = response[0].weight;
-      DataService.putInfo($ctrl.item)
-      .then(function(response){
-        if (response.data.stamp) {
-          $state.go('public.stamp.items', {'banch': $stateParams.banch})
-        }
-      })
+    DataService.putInfo($ctrl.item)
+    .then(function(response){
+      if (response.data.stamp) {
+        $state.go('public.stamp.items', {'banch': $stateParams.banch})
+      }
     })
   }
 

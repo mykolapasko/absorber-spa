@@ -191,41 +191,59 @@ function PDFController($scope, DataService) {
 
   // Stickers section
 
-  // pdfCtrl.createStickersPdf = function(banch) {
-  //   var promise = DataService.getBanchItemsToPdf(banch);
-  //   promise.then(function (response){
-  //     pdfCtrl.pdfContent = response;
-  //     console.log("Stickers response: ", response);
-  //     pdfCtrl.downloadPdf();
-  //   });
-  // }
+  pdfCtrl.createStickersPdf = function(banch) {
+    var promise = DataService.getBanchItemsForStickers(banch);
+    promise.then(function (response){
+      pdfCtrl.pdfContent = response;
+      var difference = 6 - response.length % 6;
+      for (let i = 0; i < difference; i++) {
+        pdfCtrl.pdfContent.push('');
+      }
+      console.log(pdfCtrl.pdfContent);
+      pdfCtrl.downloadStickerPdf();
+    });
+  }
 
-  // pdfCtrl.downloadPdf = function() {
-    
-  //   var dd = {
-  //     content: [
-  //       {
-  //         text: 'Awesome stickers for banch ' + pdfCtrl.stickerBanch
-  //       },
-  //       {
-  //         table: {
-  //           body: [{
-  //             stack: [
-  //               {
-  //                 ul: [
-  //                   '16',
-  //                   '9999999'
-  //                 ]
-  //               }
-  //             ]
-  //           }]
-  //         }
-  //       }
-  //     ]
-  //   };
+  pdfCtrl.downloadStickerPdf = function() {
+    const externalDataRetrievedFromServer = pdfCtrl.pdfContent;
 
-  //   pdfMake.createPdf(dd).download(pdfCtrl.stickerBanch);
-  // }
+    function buildStickersTableBody(data) {
+      var body = [];
+      var iterations = data.length / 6;
+      for (let i = 0; i < iterations; i++) {
+        var dataRow = data.splice(0,6);
+        body.push(dataRow);
+      }
+      console.log(body);
+      return body;
+    }
+
+    function stickersTable(data) {
+      return {
+          style: 'tableStickers',
+          table: {
+              widths: ['*','*','*','*','*','*'],
+              body: buildStickersTableBody(data)
+            }
+        };
+      };
+
+    var dd = {
+      content: [
+        {text: 'Awesome stickers'},
+        stickersTable(externalDataRetrievedFromServer)
+      ],
+      styles: {
+        tableStickers: {
+          alignment: 'center',
+          fontSize: 22,
+          bold: true
+        }
+      }
+    }
+
+    pdfMake.createPdf(dd).download(pdfCtrl.stickerBanch);
+  }
 
 
 }
