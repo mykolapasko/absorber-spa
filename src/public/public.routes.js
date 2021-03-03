@@ -201,6 +201,14 @@ function routeConfig ($stateProvider) {
           return DataService.getDeckAgents($stateParams.agentData.deck);
         }]
       }
+    }).state('public.assembly.agent', {
+      templateUrl: 'public/assembly/agent.html',
+      controller: 'AssemblyAgentController as asagtCtrl',
+      resolve: {
+        agent: ['DataService', '$stateParams', function(DataService, $stateParams) {
+          return DataService.getDeckAgent($stateParams.agentData.deck);
+        }]
+      }
     }).state('public.tip', {
       url: '/tip',
       templateUrl: 'public/tip/tip.html',

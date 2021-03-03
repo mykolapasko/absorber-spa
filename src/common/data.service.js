@@ -418,6 +418,18 @@ service.getDeckAgents = function (deck) {
     });
   }
 
+  service.getDeckAgent = function (deck) {
+    return $http({
+      method: "GET",
+      url: (ApiPath + "/agents")
+    }).then(function(response) {
+      var filteredArray = response.data.filter(function(agent) {
+        return agent.deck === deck && agent.isEmpty === false;
+      })
+      return filteredArray;
+    })
+  }
+
 
   service.putElementInfo = function (data) {
     var putData = data;
