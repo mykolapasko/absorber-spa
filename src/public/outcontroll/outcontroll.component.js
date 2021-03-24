@@ -21,7 +21,7 @@ function OutControllItemsComponentController ($scope, DataService) {
     promise.then(function(response) {
       item.data = {};
       item.data.element_weight = parseFloat(response.slice(2,8));
-      item.data.expectedElementWgt = parseFloat(item.pipe_weight + item.tipWgt + item.agentWgt + item.absorber_weight + 1.4).toPrecision(5);
+      item.data.expectedElementWgt = parseFloat(item.pipe_weight + 18.4 + item.agentWgt + item.absorber_weight + 1.4).toPrecision(5);
       console.log("tipWgt: ", item.tipWgt);
       console.log("item.pipe_weight: ", item.pipe_weight);
       console.log("item.agentWgt: ", item.agentWgt);
