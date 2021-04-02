@@ -113,10 +113,35 @@ function routeConfig ($stateProvider) {
       url: '/outcontroll',
       templateUrl: 'public/outcontroll/outcontroll.html',
       controller: 'OutControllController as outCtrl',
-      resolve: {
-        container: ['DataService', function (DataService) {
-          return DataService.getContainer();
-        }]
+
+    })
+    .state('public.outcontroll.items', {
+      views: {
+        "@" : {
+          templateUrl: 'public/outcontroll/items.html',
+          controller: 'OutControllItemsController as outCtrl',
+          resolve: {
+            items: ['DataService', '$stateParams', function(DataService, $stateParams) {
+              return DataService.getItemsToOutControll($stateParams.banch);
+            }],
+            container: ['DataService', '$stateParams', function(DataService) {
+              return DataService.getContainer();
+            }]
+          }
+        }
+      }
+    })
+    .state('public.outcontroll.details', {
+      views: {
+        "@" : {
+          templateUrl: 'public/outcontroll/item-details.html',
+          controller: 'DetailsController as detCtrl',
+          resolve: {
+            item: ['DataService', '$stateParams', function(DataService, $stateParams) {
+              return DataService.getItem($stateParams.itemId);
+            }]
+          }
+        }
       }
     })
     .state('public.package', {
